@@ -1,0 +1,137 @@
+#payment-receipt-print-root {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.payment-receipt-sheet {
+    width: 80mm;
+    max-width: 80mm;
+    margin: 0 auto;
+    padding: 12px 10px;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #111827;
+    background: #fff;
+}
+
+.payment-receipt-sheet .receipt-title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.payment-receipt-sheet .receipt-subtitle {
+    text-align: center;
+    font-size: 10px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.payment-receipt-sheet .receipt-meta {
+    margin-bottom: 10px;
+}
+
+.payment-receipt-sheet .receipt-meta p {
+    margin: 0 0 3px;
+}
+
+.payment-receipt-sheet .receipt-divider {
+    border-top: 1px dashed #9ca3af;
+    margin: 8px 0;
+}
+
+.payment-receipt-sheet table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.payment-receipt-sheet th,
+.payment-receipt-sheet td {
+    padding: 4px 0;
+    vertical-align: top;
+    text-align: left;
+}
+
+.payment-receipt-sheet th {
+    font-size: 10px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.payment-receipt-sheet td.amount {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.payment-receipt-sheet .receipt-item-row + .receipt-item-row td {
+    border-top: 1px dashed #d1d5db;
+    padding-top: 8px;
+}
+
+.payment-receipt-sheet .receipt-item-title {
+    font-weight: 600;
+}
+
+.payment-receipt-sheet .receipt-item-periode {
+    color: #6b7280;
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.payment-receipt-sheet .receipt-item-amounts {
+    display: grid;
+    gap: 2px;
+}
+
+.payment-receipt-sheet .receipt-item-amounts > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.payment-receipt-sheet .receipt-item-amounts span {
+    color: #6b7280;
+}
+
+.payment-receipt-sheet .receipt-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.payment-receipt-sheet .receipt-footer {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 10px;
+    color: #6b7280;
+}
+
+@media print {
+    body > *:not(#payment-receipt-print-root) {
+        display: none !important;
+    }
+
+    #payment-receipt-print-root {
+        position: static;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        pointer-events: auto;
+    }
+
+    .payment-receipt-sheet {
+        width: 80mm;
+        max-width: 80mm;
+    }
+}

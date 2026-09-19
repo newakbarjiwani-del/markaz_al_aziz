@@ -1,0 +1,339 @@
+/**
+ * DataTables 2 chrome overrides — loaded AFTER dataTables.dataTables.min.css
+ * so search, length select, and pagination match app form-input / primary UI.
+ */
+
+/* Prevent default DT layout gutters from causing horizontal overflow */
+.dt-container .dt-layout-cell > * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.dt-container .dt-layout-row {
+    max-width: 100%;
+}
+
+.dt-container .dt-layout-table {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Search input */
+.dt-container .dt-search input.dt-input,
+.dt-container .dt-search input.form-input,
+.dt-container .dt-search input.datatable-search {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--surface-border) !important;
+    background: var(--surface-card) !important;
+    padding: var(--space-input-y) var(--space-input-x) !important;
+    font-size: 0.875rem !important;
+    font-family: inherit;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dt-container .dt-search input.dt-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.85;
+}
+
+.dt-container .dt-search input.dt-input:focus {
+    outline: none !important;
+    border-color: var(--color-primary-400) !important;
+    box-shadow: var(--focus-ring) !important;
+}
+
+.dark .dt-container .dt-search input.dt-input,
+.dark .dt-container .dt-search input.form-input {
+    border-color: var(--surface-border) !important;
+    background: var(--surface-muted) !important;
+    color: var(--text-primary) !important;
+}
+
+.dark .dt-container .dt-search input.dt-input:focus {
+    border-color: var(--color-primary-500) !important;
+    box-shadow: var(--focus-ring) !important;
+}
+
+/* Length select */
+.dt-container .dt-length select.dt-input,
+.dt-container .dt-length select.form-input,
+.dt-container .dt-length select.datatable-length {
+    width: auto;
+    min-width: 5.5rem;
+    max-width: 100%;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--surface-border) !important;
+    background-color: var(--surface-card) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2366766b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.65rem center !important;
+    padding: var(--space-input-y) 2rem var(--space-input-y) var(--space-input-x) !important;
+    font-size: 0.875rem !important;
+    font-family: inherit;
+    color: var(--text-primary) !important;
+    appearance: none !important;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.dt-container .dt-length select.dt-input:focus {
+    outline: none !important;
+    border-color: var(--color-primary-400) !important;
+    box-shadow: var(--focus-ring) !important;
+}
+
+.dark .dt-container .dt-length select.dt-input,
+.dark .dt-container .dt-length select.form-input {
+    border-color: var(--surface-border) !important;
+    background-color: var(--surface-muted) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Labels */
+.dt-container .dt-search label,
+.dt-container .dt-length label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Pagination buttons */
+.dt-container .dt-paging button.dt-paging-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.75rem !important;
+    margin: 0 !important;
+    border: 1px solid var(--surface-border) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--surface-card) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    font-family: inherit;
+    line-height: 1 !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.dt-container .dt-paging button.dt-paging-button:hover:not(.disabled):not(.current) {
+    background: var(--color-primary-50) !important;
+    border-color: var(--color-primary-200) !important;
+    color: var(--color-primary-700) !important;
+}
+
+.dt-container .dt-paging button.dt-paging-button.current,
+.dt-container .dt-paging button.dt-paging-button.current:hover {
+    background: var(--color-primary-600) !important;
+    border-color: var(--color-primary-600) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgb(10 127 73 / 0.28);
+}
+
+.dt-container .dt-paging button.dt-paging-button.disabled,
+.dt-container .dt-paging button.dt-paging-button.disabled:hover {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    color: var(--text-muted) !important;
+}
+
+.dark .dt-container .dt-paging button.dt-paging-button {
+    background: var(--surface-muted) !important;
+    border-color: var(--surface-border) !important;
+    color: var(--text-secondary) !important;
+}
+
+.dark .dt-container .dt-paging button.dt-paging-button:hover:not(.disabled):not(.current) {
+    background: color-mix(in srgb, var(--color-primary-950) 70%, transparent) !important;
+    border-color: var(--color-primary-700) !important;
+    color: var(--color-primary-300) !important;
+}
+
+.dark .dt-container .dt-paging button.dt-paging-button.current,
+.dark .dt-container .dt-paging button.dt-paging-button.current:hover {
+    background: var(--color-primary-500) !important;
+    border-color: var(--color-primary-500) !important;
+    color: var(--color-primary-950) !important;
+}
+
+/* Datatable toolbar — compact length + search */
+.dt-container .dt-search {
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dt-container > .dt-layout-row:first-child .dt-layout-end {
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dt-container .dt-length label,
+.dt-container .dt-search label {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: auto;
+}
+
+.dt-container .dt-length select.dt-input {
+    width: 4.5rem !important;
+    min-width: 4.5rem;
+    max-width: 4.5rem;
+    margin: 0;
+}
+
+.dt-container .dt-search input.dt-input {
+    min-width: 0;
+}
+
+@media (max-width: 639px) {
+    .dt-container > .dt-layout-row:first-child {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 0.75rem;
+    }
+
+    .dt-container > .dt-layout-row:first-child .dt-layout-end {
+        padding-right: 0.75rem;
+    }
+
+    .dt-container .dt-length {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+    .dt-container .dt-search {
+        flex: 1 1 9rem;
+        min-width: 0;
+        max-width: none;
+        padding-right: 0.75rem;
+    }
+}
+
+/* Loading overlay — full scroll width (incl. horizontally scrolled columns) */
+.table-scroll.is-loading table.dataTable tbody {
+    opacity: 0.45;
+}
+
+.table-scroll.is-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: var(--table-scroll-content-width, 100%);
+    min-width: 100%;
+    height: var(--table-scroll-content-height, 100%);
+    min-height: 100%;
+    background: color-mix(in srgb, var(--surface-card) 82%, transparent);
+    backdrop-filter: blur(2px);
+    border-radius: var(--radius-md);
+    pointer-events: none;
+}
+
+.table-scroll > .dt-processing,
+.table-scroll > .dataTables_processing {
+    position: absolute !important;
+    inset: 0 !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    z-index: 3;
+    border-radius: var(--radius-md);
+    pointer-events: none;
+}
+
+.table-scroll.is-loading > .dt-processing,
+.table-scroll.is-loading > .dataTables_processing {
+    display: flex !important;
+}
+
+.dt-container--busy .dt-paging-button:not(.current),
+.dt-container--busy .dt-search input,
+.dt-container--busy .dt-length select {
+    opacity: 0.72;
+}
+
+.dt-container--busy .dt-paging,
+.dt-container--busy .dt-search,
+.dt-container--busy .dt-length {
+    pointer-events: none;
+}
+
+.datatable-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-gap-sm);
+    min-width: 12.5rem;
+    max-width: calc(100% - 2rem);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--surface-border);
+    background: var(--surface-card);
+    box-shadow: var(--shadow-md);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.dark .datatable-loading {
+    border-color: var(--surface-border);
+    background: var(--surface-muted);
+    color: var(--text-secondary);
+}
+
+.datatable-loading__text {
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.datatable-loading__spinner {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    border: 2px solid var(--color-primary-200);
+    border-top-color: var(--color-primary-600);
+    border-radius: 50%;
+    animation: datatable-spin 0.65s linear infinite;
+}
+
+.dark .datatable-loading__spinner {
+    border-color: var(--color-primary-800);
+    border-top-color: var(--color-primary-400);
+}
+
+@keyframes datatable-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .datatable-loading__spinner {
+        animation-duration: 1.25s;
+    }
+}

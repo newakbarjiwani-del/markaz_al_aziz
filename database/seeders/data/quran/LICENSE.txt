@@ -1,0 +1,1 @@
+Arabic Uthmani text and Indonesian translation via api.alquran.cloud (editions: quran-uthmani, id.indonesian). Fixture covers Al-Fatihah + Juz 30 for MVP. Replace/extend with a full Kemenag pack under this directory if needed.

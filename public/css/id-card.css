@@ -1,0 +1,845 @@
+/* ID Card — Yayasan Ittihad Pekanbaru
+   Standard CR80 ratio: 85.6 × 54 mm ≈ 1.586:1 */
+
+:root {
+    --id-green: #189e61;
+    --id-green-dark: #077844;
+    --id-green-light: #28bc79;
+    --id-gold: #f3ea0e;
+    --id-gold-light: #fdf042;
+    --id-cream: #fafaf8;
+    --id-card-w: 480px;
+    --id-card-h: 302px; /* 480 × (996÷1580) — matches kartu_depan.png */
+}
+
+/* —— Gallery layout —— */
+.id-card-gallery {
+    display: grid;
+    gap: 2rem;
+}
+
+.id-card-set {
+    break-inside: avoid;
+}
+
+.id-card-set__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.id-card-set__header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.dark .id-card-set__header h3 { color: #f1f5f9; }
+
+.id-card-set__faces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.id-card-set__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.375rem;
+}
+
+/* —— Base card —— */
+.id-card {
+    position: relative;
+    width: var(--id-card-w);
+    height: var(--id-card-h);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px rgb(0 0 0 / 0.07),
+        0 12px 28px rgb(43 63 36 / 0.12);
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    line-height: 1.35;
+    color: var(--id-green-dark);
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.id-card--back {
+    background: var(--id-cream);
+}
+
+/* —— Image template cards (student) —— */
+.id-card--template {
+    container-type: size;
+    background: #fff;
+}
+
+.id-card__template {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.id-card__template-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.id-card__template-photo {
+    position: absolute;
+    left: 7.3%;
+    top: 30.2%;
+    width: 21.8%;
+    height: 51.5%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+}
+
+.id-card__template-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.id-card--template .id-card__photo-placeholder {
+    font-size: clamp(1.25rem, 18cqw, 2.5rem);
+    color: #64748b;
+}
+
+/* Field rows — grid label : value (label/sep hidden; baked into kartu_depan.png) */
+.id-card__template-fields {
+    position: absolute;
+    left: 38%;
+    right: 3%;
+    top: 45.8%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    pointer-events: none;
+}
+
+.id-card__row {
+    display: grid;
+    grid-template-columns: 120px 12px 1fr;
+    align-items: center;
+    min-height: 21.5px;
+}
+
+.id-card--template .id-card__row .label,
+.id-card--template .id-card__row .sep {
+    visibility: hidden;
+}
+
+.id-card__row .label {
+    font-size: clamp(8px, 2cqw, 10px);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #222;
+}
+
+.id-card__row .sep {
+    text-align: center;
+    font-weight: 700;
+    font-size: clamp(8px, 2cqw, 10px);
+}
+
+.id-card__row .value {
+    display: block;
+    padding-left: 10px;
+    font-size: clamp(8px, 2cqw, 10px);
+    font-weight: 600;
+    color: #111;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.15;
+}
+
+.id-card__row:last-child {
+    grid-template-columns: 118px 12px 1fr;
+}
+
+.id-card__row--nis .value {
+    font-size: clamp(7px, 1.85cqw, 9px);
+    letter-spacing: 0.03em;
+}
+
+.id-card__row--alamat .value {
+    white-space: normal;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: clamp(7px, 1.7cqw, 9px);
+}
+
+/* —— FRONT: green left panel —— */
+.id-card__green-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 28px;
+    width: 34%;
+    background: linear-gradient(165deg, var(--id-green) 0%, var(--id-green-dark) 100%);
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+    padding: 14px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.id-card__green-panel::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: linear-gradient(90deg, rgb(0 0 0 / 0.15), transparent);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    pointer-events: none;
+}
+
+.id-card--teacher .id-card__green-panel,
+.id-card--student .id-card__green-panel {
+    background: linear-gradient(165deg, var(--id-green-dark) 0%, #055e36 100%);
+}
+
+.id-card--teacher .id-card__green-panel::before,
+.id-card--student .id-card__green-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--id-gold), var(--id-gold-light), var(--id-gold));
+}
+
+.id-card__logo {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0.25rem;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    flex-shrink: 0;
+}
+
+.id-card__photo {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 108px;
+    height: 132px;
+    border: 3px solid #111;
+    background: #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.25);
+}
+
+.id-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.id-card__photo-placeholder {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+/* —— FRONT: white body —— */
+.id-card__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 28px;
+    padding: 12px 14px 8px 38%;
+    z-index: 1;
+}
+
+.id-card__watermark {
+    position: absolute;
+    right: 4px;
+    bottom: 8px;
+    width: 72px;
+    height: 72px;
+    opacity: 0.06;
+    background: center / contain no-repeat;
+    pointer-events: none;
+}
+
+.id-card__school-line1 {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--id-green);
+}
+
+.id-card__school-line2 {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--id-green);
+    line-height: 1.15;
+    margin-top: 1px;
+}
+
+.id-card__school-line3 {
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--id-gold);
+    margin-top: 2px;
+}
+
+.id-card__ornament {
+    text-align: center;
+    color: var(--id-gold);
+    font-size: 10px;
+    margin: 4px 0 6px;
+    letter-spacing: 0.3em;
+}
+
+.id-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--id-green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+}
+
+.id-card--teacher .id-card__badge {
+    background: linear-gradient(135deg, var(--id-green-dark), var(--id-green));
+    border: 1px solid var(--id-gold);
+}
+
+.id-card__badge-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--id-gold);
+}
+
+.id-card__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.id-card__field {
+    display: grid;
+    grid-template-columns: 14px 72px 8px 1fr;
+    align-items: baseline;
+    gap: 0 4px;
+    padding: 3px 0;
+    border-bottom: 1px dotted #d4d4c8;
+    font-size: 9.5px;
+}
+
+.id-card__field:last-child { border-bottom: none; }
+
+.id-card__field-icon {
+    color: var(--id-green);
+    font-size: 11px;
+    line-height: 1;
+}
+
+.id-card__field-label {
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--id-green);
+}
+
+.id-card__field-sep { color: var(--id-green); font-weight: 700; }
+
+.id-card__field-value {
+    font-weight: 600;
+    color: #1a1a1a;
+    word-break: break-word;
+    font-size: 9px;
+}
+
+/* —— FRONT footer bar —— */
+.id-card__footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 28px;
+    background: var(--id-green);
+    border-top: 2px solid var(--id-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 3;
+}
+
+/* —— BACK card —— */
+.id-card__back-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            var(--id-green) 0,
+            var(--id-green) 1px,
+            transparent 1px,
+            transparent 12px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            var(--id-green) 0,
+            var(--id-green) 1px,
+            transparent 1px,
+            transparent 12px
+        );
+    pointer-events: none;
+}
+
+.id-card__back-corner-tr,
+.id-card__back-corner-bl {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: var(--id-green);
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.id-card__back-corner-tr {
+    top: -20px;
+    right: -20px;
+    transform: rotate(45deg);
+}
+
+.id-card__back-corner-bl {
+    bottom: 20px;
+    left: -20px;
+    transform: rotate(45deg);
+}
+
+.id-card__back-header {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    gap: 8px;
+    align-items: start;
+    padding: 12px 14px 8px;
+    z-index: 1;
+}
+
+.id-card__back-header .id-card__logo {
+    width: 44px;
+    height: 44px;
+}
+
+.id-card__back-quote {
+    max-width: 130px;
+    text-align: right;
+    font-size: 7px;
+    font-style: italic;
+    color: var(--id-green);
+    line-height: 1.4;
+    padding-top: 4px;
+}
+
+.id-card__back-quote-mark {
+    color: var(--id-gold);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+}
+
+.id-card__back-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--id-gold) 20%, var(--id-gold) 80%, transparent);
+    margin: 0 14px 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.id-card__back-divider::after {
+    content: '✦';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--id-cream);
+    color: var(--id-gold);
+    font-size: 8px;
+    padding: 0 6px;
+}
+
+.id-card__back-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 10px;
+    padding: 0 14px 36px;
+    z-index: 1;
+    height: calc(100% - 90px);
+}
+
+.id-card__back-vline {
+    background: linear-gradient(180deg, var(--id-gold), var(--id-gold-light), var(--id-gold));
+    width: 1px;
+}
+
+.id-card__section-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--id-green);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.id-card__section-title i { color: var(--id-gold); font-size: 10px; }
+
+.id-card__rules {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.id-card__rules li {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 6px;
+    font-size: 7.5px;
+    line-height: 1.35;
+    color: #334155;
+}
+
+.id-card__rule-num {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--id-green);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.id-card__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.id-card__contact {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    align-items: start;
+    font-size: 7.5px;
+    color: #334155;
+    line-height: 1.35;
+}
+
+.id-card__contact-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--id-green);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.id-card__back-footer {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 10px;
+    height: 26px;
+    background: var(--id-green);
+    border: 1px solid var(--id-gold);
+    border-radius: 4px;
+    clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 7.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 2;
+}
+
+.id-card__back-footer-ornament { color: var(--id-gold); font-size: 8px; }
+
+.id-card__qr {
+    position: absolute;
+    right: 14px;
+    bottom: 42px;
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    color: #94a3b8;
+    text-align: center;
+    z-index: 2;
+}
+
+.id-card__qr-code {
+    font-family: ui-monospace, monospace;
+    font-size: 6px;
+    word-break: break-all;
+    padding: 2px;
+    line-height: 1.1;
+}
+
+/* —— Gallery tile preview —— */
+.id-card-tile {
+    cursor: pointer;
+    min-width: 0;
+}
+
+.id-card-preview {
+    container-type: inline-size;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    --preview-scale: min(calc(100cqw / var(--id-card-w)), calc(178px / var(--id-card-h)));
+    height: calc(var(--id-card-h) * var(--preview-scale));
+}
+
+.id-card-preview__scale {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--id-card-w);
+    height: var(--id-card-h);
+    transform: translateX(-50%) scale(var(--preview-scale));
+    transform-origin: top center;
+    pointer-events: none;
+}
+
+/* —— Modal detail —— */
+.id-card-modal-content {
+    container-type: inline-size;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.id-card-modal-faces {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .id-card-modal-faces {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.id-card-modal-face {
+    container-type: inline-size;
+    width: 100%;
+    max-width: var(--id-card-w);
+    position: relative;
+    --modal-scale: min(1, calc(100cqw / var(--id-card-w)));
+    height: calc(var(--id-card-h) * var(--modal-scale));
+    flex-shrink: 0;
+}
+
+.id-card-modal-face .id-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(var(--modal-scale));
+    transform-origin: top center;
+    box-shadow:
+        0 4px 6px rgb(0 0 0 / 0.07),
+        0 12px 28px rgb(43 63 36 / 0.12);
+}
+
+.id-card-show-page__faces {
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.id-card-show-page__face {
+    flex: 1 1 22rem;
+    max-width: 100%;
+}
+
+.id-card-show-page__face .id-card-modal-face {
+    margin-top: 0.375rem;
+}
+
+@media (min-width: 1024px) {
+    .id-card-show-page__faces {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* —— Off-screen print mount (same page — reuses loaded CSS/fonts/icons) —— */
+#id-card-print-root {
+    position: fixed;
+    left: -10000px;
+    top: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.id-card-print-sheet {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8mm;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.id-card-print-sheet .id-card {
+    position: relative !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+    flex-shrink: 0;
+}
+
+/* —— Print —— */
+@page {
+    size: A4 landscape;
+    margin: 10mm;
+}
+
+@media print {
+    :root {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    body > *:not(#id-card-print-root) {
+        display: none !important;
+    }
+
+    #id-card-print-root {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: block !important;
+    }
+
+    .id-card-print-sheet {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        gap: 8mm !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+    }
+
+    .id-card-print-sheet .id-card {
+        width: var(--id-card-w) !important;
+        height: var(--id-card-h) !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .id-card--template .id-card__template {
+        object-fit: fill !important;
+    }
+}
+

@@ -1,0 +1,827 @@
+[
+    {
+        "heading": "Pelanggaran Ringan Bidang Kedisiplinan",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Terlambat bangun",
+                "point": 5
+            },
+            {
+                "name": "Terlambat ke masjid",
+                "point": 5
+            },
+            {
+                "name": "Terlambat mengikuti pengajian",
+                "point": 5
+            },
+            {
+                "name": "Tidak membawa alat tulis",
+                "point": 5
+            },
+            {
+                "name": "Tidak membawa kitab pelajaran",
+                "point": 5
+            },
+            {
+                "name": "Tidak mengikuti piket",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Kebersihan",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Membuang sampah sembarangan",
+                "point": 10
+            },
+            {
+                "name": "Tempat tidur tidak dirapikan",
+                "point": 5
+            },
+            {
+                "name": "Lemari tidak rapi",
+                "point": 5
+            },
+            {
+                "name": "Pakaian bergantungan di kamar",
+                "point": 5
+            },
+            {
+                "name": "Tidak membersihkan kamar mandi setelah digunakan",
+                "point": 10
+            },
+            {
+                "name": "Tidak mengikuti kerja bakti",
+                "point": 10
+            },
+            {
+                "name": "Meninggalkan peralatan makan kotor",
+                "point": 5
+            },
+            {
+                "name": "Membiarkan kamar kotor",
+                "point": 10
+            },
+            {
+                "name": "Tidak membersihkan ruang belajar",
+                "point": 10
+            },
+            {
+                "name": "Tidak menjaga kebersihan lingkungan",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Berpakaian",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Tidak memakai peci saat kegiatan yang diwajibkan (putra)"
+            },
+            {
+                "name": "Seragam tidak lengkap"
+            },
+            {
+                "name": "Tidak memakai sendal di lingkungan pondok"
+            },
+            {
+                "name": "Ghosob"
+            },
+            {
+                "name": "Tidak mengenakan pakaian saat keluar dari kamar"
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Belajar",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Mengobrol saat pelajaran",
+                "point": 5
+            },
+            {
+                "name": "Tidur saat pelajaran",
+                "point": 10
+            },
+            {
+                "name": "Tidak mengerjakan tugas",
+                "point": 10
+            },
+            {
+                "name": "Tidak mencatat materi",
+                "point": 5
+            },
+            {
+                "name": "Tidak membawa buku pelajaran",
+                "point": 5
+            },
+            {
+                "name": "Keluar kelas tanpa izin sesaat",
+                "point": 10
+            },
+            {
+                "name": "Tidak memperhatikan guru",
+                "point": 20
+            },
+            {
+                "name": "Mengganggu teman belajar",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Ibadah",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Datang terlambat ke salat berjamaah",
+                "point": 5
+            },
+            {
+                "name": "Berbicara/mengobrol saat dzikiran",
+                "point": 10
+            },
+            {
+                "name": "Bercanda di dalam masjid",
+                "point": 10
+            },
+            {
+                "name": "Tidak membawa Al-Qur'an saat tadarus",
+                "point": 5
+            },
+            {
+                "name": "Tidak menjaga kebersihan masjid",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Asrama",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Tidur di kamar lain tanpa izin",
+                "point": 10
+            },
+            {
+                "name": "Berisik saat jam istirahat",
+                "point": 10
+            },
+            {
+                "name": "Memindahkan inventaris kamar tanpa izin",
+                "point": 10
+            },
+            {
+                "name": "Tidak mengunci lemari pribadi",
+                "point": 5
+            },
+            {
+                "name": "Menyimpan barang tidak pada tempatnya",
+                "point": 5
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Akhlak",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Berkata kurang sopan kepada teman",
+                "point": 30
+            },
+            {
+                "name": "Tidak mengucapkan salam kepada guru",
+                "point": 5
+            },
+            {
+                "name": "Memanggil teman dengan julukan yang tidak pantas",
+                "point": 10
+            },
+            {
+                "name": "Bercanda berlebihan hingga mengganggu",
+                "point": 10
+            },
+            {
+                "name": "Mengejek teman",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Ringan Bidang Administrasi",
+        "level": "ringan",
+        "items": [
+            {
+                "name": "Terlambat menyerahkan surat izin",
+                "point": 10
+            },
+            {
+                "name": "Tidak melapor setelah kembali dari izin",
+                "point": 10
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Ibadah",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Tidak mengikuti salat berjamaah tanpa uzur syar'i",
+                "point": 25
+            },
+            {
+                "name": "Meninggalkan pengajian wajib tanpa izin",
+                "point": 25
+            },
+            {
+                "name": "Meninggalkan tadarus Al-Qur'an yang diwajibkan tanpa alasan",
+                "point": 25
+            },
+            {
+                "name": "Tidur saat kegiatan ibadah setelah diperingatkan",
+                "point": 25
+            },
+            {
+                "name": "Mengganggu kekhusyukan ibadah secara sengaja",
+                "point": 35
+            },
+            {
+                "name": "Mengajak santri lain meninggalkan kegiatan ibadah",
+                "point": 50
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Akademik",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Bolos ngaji (Sorogan, kelas, jama'i)",
+                "point": 100
+            },
+            {
+                "name": "Memalsukan tanda tangan guru",
+                "point": 50
+            },
+            {
+                "name": "Mengganggu jalannya pembelajaran hingga dihentikan",
+                "point": 35
+            },
+            {
+                "name": "PPS (Pura-pura sakit) agar bisa bolos kegiatan pondok",
+                "point": 100
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Disiplin",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Keluar area pondok tanpa izin resmi",
+                "point": 200
+            },
+            {
+                "name": "Kembali ke pondok melebihi batas waktu izin",
+                "point": 100
+            },
+            {
+                "name": "Mengulangi pelanggaran ringan sebanyak tiga kali",
+                "point": 35
+            },
+            {
+                "name": "Tidak mengikuti kegiatan wajib selama satu hari tanpa alasan",
+                "point": 50
+            },
+            {
+                "name": "Tidak melapor setelah kembali dari izin",
+                "point": 25
+            },
+            {
+                "name": "Menghindari pemeriksaan pengurus",
+                "point": 35
+            },
+            {
+                "name": "Menghalangi petugas menjalankan tugas",
+                "point": 50
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Asrama",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Menyembunyikan santri yang melanggar",
+                "point": 35
+            },
+            {
+                "name": "Memindahkan inventaris pondok tanpa izin",
+                "point": 35
+            },
+            {
+                "name": "Merusak inventaris pondok",
+                "point": 100,
+                "sanction": "ganti rugi 10 x lipat"
+            },
+            {
+                "name": "Menyimpan barang milik teman tanpa izin",
+                "point": 25
+            },
+            {
+                "name": "Membuat kegaduhan pada jam istirahat sehingga mengganggu penghuni lain",
+                "point": 25
+            },
+            {
+                "name": "Menggunakan kamar kosong tanpa izin",
+                "point": 25
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Komunikasi dan Teknologi",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Membawa telepon genggam tanpa izin",
+                "point": 1000,
+                "sanction": "SP3"
+            },
+            {
+                "name": "Menggunakan telepon genggam milik orang lain tanpa izin pondok",
+                "point": 50
+            },
+            {
+                "name": "Mengakses internet tanpa izin",
+                "point": 35
+            },
+            {
+                "name": "Menggunakan media sosial tanpa izin",
+                "point": 35
+            },
+            {
+                "name": "Menyimpan kartu SIM",
+                "point": 50
+            },
+            {
+                "name": "Menyimpan perangkat modem atau alat komunikasi lain tanpa izin",
+                "point": 50
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Hubungan dengan Orang Tua/Wali",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Menghubungi orang tua di luar jadwal tanpa izin",
+                "point": 100
+            },
+            {
+                "name": "Meminjam telepon genggam atau menitipkan surat kepada pihak lain (seperti petugas keamanan, teman sekolah non-santri, pedagang, guru sekolah, atau saudara yang berada di lingkungan pondok) dengan tujuan menghubungi orang tua tanpa izin dari pihak pondok.",
+                "point": 200
+            },
+            {
+                "name": "Meminta orang tua datang ke pondok tanpa sepengetahuan pengurus",
+                "point": 200
+            },
+            {
+                "name": "Membeli barang secara daring (online) dan menerima paket tanpa izin dari pengurus pondok.",
+                "point": 100
+            },
+            {
+                "name": "Bertemu orang tua di luar waktu penjengukan",
+                "point": 150
+            },
+            {
+                "name": "Berada bersama orang tua melebihi waktu penjengukan tanpa izin",
+                "point": 100
+            },
+            {
+                "name": "Menyampaikan informasi yang tidak benar kepada orang tua sehingga menimbulkan kesalahpahaman dengan pihak pondok",
+                "point": 200
+            }
+        ]
+    },
+    {
+        "heading": "Pelanggaran Sedang Bidang Pergaulan",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Menghina teman",
+                "point": 100
+            },
+            {
+                "name": "Melakukan perundungan (bullying) secara verbal",
+                "point": 100
+            },
+            {
+                "name": "Mengancam teman",
+                "point": 200
+            },
+            {
+                "name": "Mendorong atau melakukan kekerasan terhadap teman yang membahayakan",
+                "point": 500,
+                "sanction": "SP3"
+            },
+            {
+                "name": "Menghasut santri lain untuk melanggar tata tertib",
+                "point": 50
+            },
+            {
+                "name": "Menyebarkan fitnah atau kabar bohong di lingkungan pondok",
+                "point": 500,
+                "sanction": "SP3"
+            }
+        ]
+    },
+    {
+        "heading": "Bagian Kesembilan (Pelanggaran Sedang Bidang Barang Terlarang)",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Membawa rokok ke lingkungan pondok",
+                "point": 5000,
+                "sanction": "SP3"
+            },
+            {
+                "name": "Merokok di lingkungan pondok",
+                "point": 5000,
+                "sanction": "SP3"
+            },
+            {
+                "name": "Membawa korek api tanpa izin",
+                "point": 200,
+                "sanction": "SP1"
+            },
+            {
+                "name": "Membawa senjata tiruan yang dapat mengganggu keamanan",
+                "point": 5000,
+                "sanction": "SP3"
+            },
+            {
+                "name": "Menyimpan benda yang dilarang oleh pondok",
+                "point": 5000,
+                "sanction": "SP3"
+            }
+        ]
+    },
+    {
+        "heading": "Bagian Kesepuluh (Pelanggaran Sedang Bidang Keuangan)",
+        "level": "sedang",
+        "items": [
+            {
+                "name": "Meminjam uang kepada sesama santri tanpa izin pembina dalam jumlah yang tidak wajar",
+                "point": 25
+            },
+            {
+                "name": "Menjual barang di lingkungan pondok tanpa izin",
+                "point": 35
+            },
+            {
+                "name": "Melakukan transaksi yang tidak diizinkan oleh pondok",
+                "point": 35
+            },
+            {
+                "name": "Menggunakan uang titipan teman tanpa izin",
+                "point": 50
+            }
+        ]
+    },
+    {
+        "heading": "PELANGGARAN BERAT",
+        "level": "berat",
+        "groups": [
+            {
+                "name": "Pelanggaran Berat Bidang Akidah dan Akhlak",
+                "items": [
+                    {
+                        "name": "Menghina Allah Swt., Rasulullah ﷺ, Al-Qur'an, atau syiar Islam",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menyebarkan paham yang bertentangan dengan ajaran Islam yang dianut pesantren",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menghina guru, musyrif, atau pimpinan pondok secara serius",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengancam guru atau pengurus",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan tindakan yang merendahkan martabat pesantren",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menghasut santri untuk menolak kebijakan pondok untuk melawan aturan",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Kesusilaan",
+                "items": [
+                    {
+                        "name": "Berpacaran di lingkungan pondok",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Berkhalwat (berduaan dengan lawan jenis tanpa izin dan tanpa keperluan yang dibenarkan)",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Melakukan pelecehan seksual",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan tindakan asusila",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menyimpan atau menyebarkan materi pornografi",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengakses situs atau konten pornografi",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Merekam atau menyebarkan foto/video yang melanggar kesusilaan",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Keamanan",
+                "items": [
+                    {
+                        "name": "Berkelahi hingga menyebabkan luka",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Menganiaya sesama santri",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Membawa senjata tajam tanpa izin",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Mengancam menggunakan benda berbahaya",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Melakukan pemerasan",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Menyandera atau mengurung santri lain",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Membentuk kelompok yang melakukan intimidasi atau kekerasan",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Kejujuran",
+                "items": [
+                    {
+                        "name": "Mencuri uang",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mencuri barang milik pondok",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mencuri barang milik guru",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mencuri barang milik santri lain",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menggelapkan barang titipan",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Perizinan",
+                "items": [
+                    {
+                        "name": "Kabur dari pondok tanpa izin",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Tidak kembali ke pondok setelah masa izin berakhir tanpa keterangan yang sah",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Memalsukan surat izin keluar pondok",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Menggunakan identitas santri lain untuk memperoleh izin",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Mengajak santri lain keluar pondok tanpa izin",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Komunikasi dan Orang Tua",
+                "items": [
+                    {
+                        "name": "Keluar dari area pondok bersama orang tua atau wali tanpa izin tertulis",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Bermalam di luar pondok bersama orang tua tanpa izin resmi",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Meminta orang tua memberikan keterangan palsu kepada pihak pondok",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    },
+                    {
+                        "name": "Menyembunyikan keberadaan santri dari pengawasan pondok saat kunjungan",
+                        "point": 5000,
+                        "sanction": "SP3"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Barang Terlarang",
+                "items": [
+                    {
+                        "name": "Membawa narkotika, psikotropika, atau zat adiktif lainnya",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menggunakan narkotika atau zat adiktif lainnya",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengedarkan narkotika atau zat adiktif lainnya",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Membawa minuman keras",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengonsumsi minuman keras",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengedarkan minuman keras",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Teknologi Informasi",
+                "items": [
+                    {
+                        "name": "Menyebarkan informasi bohong yang mencemarkan nama baik pesantren",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Mengunggah konten yang merendahkan martabat guru atau pesantren",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Membuat akun palsu untuk merugikan pihak lain",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menyebarkan data pribadi warga pesantren tanpa izin",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan penipuan melalui media digital",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Perusakan",
+                "items": [
+                    {
+                        "name": "Merusak fasilitas pondok secara sengaja",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Membakar fasilitas pondok",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Merusak kendaraan milik pondok atau warga pesantren",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menghilangkan inventaris pondok secara sengaja",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan vandalisme yang menyebabkan kerusakan besar",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            },
+            {
+                "name": "Pelanggaran Berat Bidang Hukum",
+                "items": [
+                    {
+                        "name": "Melakukan tindak pidana sesuai peraturan perundang-undangan",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Menjadi pelaku atau turut serta dalam perjudian",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan pemerasan atau penipuan",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Terlibat dalam tawuran di luar pondok",
+                        "point": 10000,
+                        "sanction": "DO"
+                    },
+                    {
+                        "name": "Melakukan tindakan lain yang mengakibatkan proses hukum oleh aparat berwenang",
+                        "point": 10000,
+                        "sanction": "DO"
+                    }
+                ]
+            }
+        ]
+    }
+]
