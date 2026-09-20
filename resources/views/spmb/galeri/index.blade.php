@@ -5,7 +5,7 @@
 @section('content')
 <div class="mx-auto max-w-6xl px-4 py-12">
     <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Galeri Sekolah</h1>
-    <p class="mt-1 text-sm text-slate-500">Fasilitas dan suasana Yayasan Ittihad Pekanbaru.</p>
+    <p class="mt-1 text-sm text-slate-500">Fasilitas dan suasana {{ config('app.nama_instansi') }}.</p>
 
     <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         @forelse($items as $item)

@@ -11,7 +11,7 @@
     use App\Support\DisplayDate;
 
     $logoUrl = $logoUrl ?? asset('logo.png');
-    $schoolName = $schoolName ?? config('app.nama_instansi', 'YAYASAN ITTIHAD PEKANBARU');
+    $schoolName = $schoolName ?? config('app.nama_instansi', 'MARKAZ_AL_AZIZ');
     $schoolSubtitle = $schoolSubtitle ?? strtoupper((string) config('app.domisili', 'Pekanbaru'));
     $photoUrl = $photoUrl ?? $siswa->profil?->photoUrl();
     $initials = collect(explode(' ', $siswa->name ?? ''))->map(fn ($w) => mb_substr($w, 0, 1))->take(2)->implode('');

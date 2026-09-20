@@ -10,7 +10,7 @@ class TemplatePesanTagihanSeeder extends Seeder
 {
     public function run(): void
     {
-        $instansi = config('app.nama_instansi', 'YAYASAN ITTIHAD PEKANBARU');
+        $instansi = config('app.nama_instansi', 'MARKAZ_AL_AZIZ');
         $footer = "\n\n*_*pesan otomatis dari {$instansi}_*\n*_*Silahkan menghubungi bagian keuangan jika ada kesalahan tagihan atau nama siswa_*";
 
         $rows = [

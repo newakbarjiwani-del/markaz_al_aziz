@@ -5,8 +5,8 @@
 @section('content')
 <section class="spmb-hero">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary-200">Yayasan Ittihad Pekanbaru</p>
-        <h1 class="spmb-hero__brand max-w-3xl">ITTIHAD</h1>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary-200">{{ config('app.nama_instansi') }}</p>
+        <h1 class="spmb-hero__brand max-w-3xl">{{ config('app.name') }}</h1>
         <p class="mt-4 max-w-xl text-base text-primary-100/90 sm:text-lg">
             Penerimaan Murid Baru — informasi resmi, pengumuman, dan formulir pendaftaran online.
         </p>

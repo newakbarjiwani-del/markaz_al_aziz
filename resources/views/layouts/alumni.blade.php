@@ -17,7 +17,7 @@
         @yield('content')
     </main>
     <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-500 dark:border-slate-800">
-        Yayasan Ittihad Pekanbaru
+        {{ config('app.nama_instansi') }}
     </footer>
     @include('layouts.partials.scripts')
 </body>

@@ -28,7 +28,7 @@
         <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
             <a href="{{ route('spmb.home') }}" class="flex items-center gap-2 font-semibold text-slate-900 dark:text-white">
                 <img src="{{ asset('logo.png') }}" alt="" class="h-9 w-9 object-contain">
-                <span>ITTIHAD · SPMB</span>
+                <span>{{ config('app.name') }} · SPMB</span>
             </a>
             <nav class="flex flex-wrap items-center gap-1 text-sm font-medium sm:gap-3">
                 <a href="{{ route('spmb.home') }}" class="spmb-nav__link rounded-md px-2 py-1 {{ $nav === 'home' ? 'is-active' : '' }}">Beranda</a>
@@ -46,7 +46,7 @@
 
     <footer class="spmb-footer mt-auto">
         <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-slate-600 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-            <p>&copy; {{ date('Y') }} Yayasan Ittihad Pekanbaru — Seleksi Penerimaan Murid Baru</p>
+            <p>&copy; {{ date('Y') }} {{ config('app.nama_instansi') }} — Seleksi Penerimaan Murid Baru</p>
             <a href="{{ route('login') }}" class="hover:text-primary-700 dark:hover:text-primary-300">Masuk admin</a>
         </div>
     </footer>

@@ -15,7 +15,7 @@
     }
 
     function appName() {
-        return window.PORTAL_PWA_APP_NAME || 'ITTIHAD APP';
+        return window.PORTAL_PWA_APP_NAME || 'MARKAZ_AL_AZIZ';
     }
 
     function showInstallBanner() {

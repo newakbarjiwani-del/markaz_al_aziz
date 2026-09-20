@@ -27,6 +27,6 @@ return [
         (int) (env('PORTAL_SESSION_LIFETIME') ?: ($accessTokenTtlDays * 24 * 60))
     ),
 
-    'app_name' => env('PORTAL_APP_NAME', 'ITTIHAD APP'),
+    'app_name' => env('PORTAL_APP_NAME', 'MARKAZ_AL_AZIZ'),
 
 ];

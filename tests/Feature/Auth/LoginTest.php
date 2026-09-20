@@ -17,6 +17,15 @@ test('guest can view login page', function () {
         ->assertSee('name="login"', false);
 });
 
+test('login page shows the configured system name', function () {
+    config(['app.name' => 'MARKAZ_AL_AZIZ']);
+
+    $this->get(route('login'))
+        ->assertOk()
+        ->assertSee('MARKAZ_AL_AZIZ')
+        ->assertDontSee('ITTIHAD APP');
+});
+
 test('user can login with username', function () {
     $user = User::factory()->create([
         'username' => 'bendahara1',

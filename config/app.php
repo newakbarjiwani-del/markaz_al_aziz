@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'YAYASAN ITTIHAD'),
+    'name' => env('APP_NAME', 'MARKAZ_AL_AZIZ'),
 
     /*
     |--------------------------------------------------------------------------
@@ -128,7 +128,7 @@ return [
     | School Identity (Receipt / Document Header)
     |--------------------------------------------------------------------------
     */
-    'nama_instansi' => env('APP_NAMA_INSTANSI', 'YAYASAN ITTIHAD PEKANBARU'),
+    'nama_instansi' => env('APP_NAMA_INSTANSI', 'MARKAZ_AL_AZIZ'),
     'nama_sub_instansi_1' => env('APP_NAMA_SUB_INSTANSI_1', ''),
     'nama_sub_instansi_2' => env('APP_NAMA_SUB_INSTANSI_2', ''),
     'akreditasi' => env('APP_AKREDITASI', ''),

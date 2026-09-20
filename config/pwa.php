@@ -12,11 +12,11 @@ return [
     |
     */
 
-    'name' => env('PORTAL_APP_NAME', config('portal.app_name', 'ITTIHAD APP')),
+    'name' => env('PORTAL_APP_NAME', config('portal.app_name', 'MARKAZ_AL_AZIZ')),
 
-    'short_name' => env('PWA_SHORT_NAME', 'ITTIHAD APP'),
+    'short_name' => env('PWA_SHORT_NAME', 'MARKAZ_AL_AZIZ'),
 
-    'description' => env('PWA_DESCRIPTION', 'Portal sekolah YAYASAN ITTIHAD — absensi, keuangan, dompet digital, dan perpustakaan.'),
+    'description' => env('PWA_DESCRIPTION', 'Portal sekolah MARKAZ_AL_AZIZ — absensi, keuangan, dompet digital, dan perpustakaan.'),
 
     'theme_color' => '#189e61',
 

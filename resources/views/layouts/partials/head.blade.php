@@ -49,7 +49,7 @@
         } catch (e) {}
     })();
 </script>
-<title>@hasSection('title')@yield('title') · @endif ITTIHAD APP</title>
+<title>@hasSection('title')@yield('title') · @endif {{ config('app.name') }}</title>
 <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
 @if($portalPwa ?? false)
 <link rel="manifest" href="/portal/manifest.webmanifest">

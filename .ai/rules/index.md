@@ -2,7 +2,7 @@
 
 Map of committed conventions. Read every rule file whose globs cover paths you are editing.
 
-This app is a **full copy** of **Serang Nurul Muhtadin** with Yayasan Ittihad Pekanbaru branding. Use Serang domain models (`Siswa`, `Guru`, `Tagihan`, `Dompet`, `Sccttran`, `SccttranCashless`, …) and `users.sekolah_id`. Legacy SIKEU wrappers (`scctcust`, lowercase `sm_*` / `mst_*` / `u_*`) have been removed. Keep Ittihad face/RFID splits — see [identity-storage.md](identity-storage.md).
+This app is a **full copy** of **Serang Nurul Muhtadin** with MARKAZ_AL_AZIZ branding. Use Serang domain models (`Siswa`, `Guru`, `Tagihan`, `Dompet`, `Sccttran`, `SccttranCashless`, …) and `users.sekolah_id`. Legacy SIKEU wrappers (`scctcust`, lowercase `sm_*` / `mst_*` / `u_*`) have been removed. Keep Ittihad face/RFID splits — see [identity-storage.md](identity-storage.md).
 
 | Globs | Rule |
 |-------|------|

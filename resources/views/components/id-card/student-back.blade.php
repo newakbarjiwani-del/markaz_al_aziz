@@ -11,7 +11,7 @@
 
 @php
     $logoUrl = $logoUrl ?? asset('logo.png');
-    $schoolName = $schoolName ?? config('app.nama_instansi', 'YAYASAN ITTIHAD PEKANBARU');
+    $schoolName = $schoolName ?? config('app.nama_instansi', 'MARKAZ_AL_AZIZ');
     $schoolSubtitle = $schoolSubtitle ?? strtoupper((string) config('app.domisili', 'Pekanbaru'));
     $address = $address ?? config('app.alamat', 'Pekanbaru, Riau, Indonesia');
     $website = $website ?? (config('app.website') ?: null);

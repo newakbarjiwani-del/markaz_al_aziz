@@ -56,7 +56,7 @@
 
     <div class="min-w-0 flex-1 space-y-10">
         {{-- Colors --}}
-        <x-ui-section id="colors" title="Warna Brand" description="Palette dari logo YPI YAYASAN ITTIHAD.">
+        <x-ui-section id="colors" title="Warna Brand" description="Palette dari logo {{ config('app.name') }}.">
             <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 @foreach([
                     ['Primary 600', 'var(--color-primary-600)', '#436137', 'Tombol utama, link'],

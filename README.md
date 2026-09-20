@@ -1,10 +1,10 @@
-# Yayasan Ittihad Pekanbaru — Sistem Informasi Sekolah
+# MARKAZ_AL_AZIZ — Sistem Informasi Sekolah
 
-Aplikasi manajemen sekolah (**Yayasan Ittihad Pekanbaru**) dibangun dengan **Laravel 13**. Codebase ini adalah **salinan penuh** dari proyek **Serang Nurul Muhtadin**, dengan identitas/branding Ittihad. Sistem mencakup panel admin untuk staf sekolah dan portal terpisah untuk guru, orang tua, serta siswa — dengan navigasi dan akses data yang disesuaikan per peran.
+Aplikasi manajemen sekolah (**MARKAZ_AL_AZIZ**) dibangun dengan **Laravel 13**. Codebase ini adalah **salinan penuh** dari proyek **Serang Nurul Muhtadin**, dengan identitas/branding MARKAZ_AL_AZIZ. Sistem mencakup panel admin untuk staf sekolah dan portal terpisah untuk guru, orang tua, serta siswa — dengan navigasi dan akses data yang disesuaikan per peran.
 
 ## Asal codebase & status salinan
 
-Proyek ini mengikuti arsitektur, skema, modul, dan konvensi **Serang Nurul Muhtadin**. Layer SIKEU lama (`scctcust`, `sm_*` Eloquent wrappers, FaceAbsen, portal `cust_id`) **sudah dihapus**. Identitas sekolah diganti ke Yayasan Ittihad Pekanbaru (`APP_*`, logo, portal name). Ledger Serang `Sccttran` / `SccttranCashless` tetap dipakai. Face/RFID memakai tabel terpisah Ittihad (`siswa_wajah`, `rfid`) — lihat `.ai/rules/identity-storage.md`.
+Proyek ini mengikuti arsitektur, skema, modul, dan konvensi **Serang Nurul Muhtadin**. Layer SIKEU lama (`scctcust`, `sm_*` Eloquent wrappers, FaceAbsen, portal `cust_id`) **sudah dihapus**. Identitas sekolah diganti ke MARKAZ_AL_AZIZ (`APP_*`, logo, portal name). Ledger Serang `Sccttran` / `SccttranCashless` tetap dipakai. Face/RFID memakai tabel terpisah Ittihad (`siswa_wajah`, `rfid`) — lihat `.ai/rules/identity-storage.md`.
 
 ### Sudah disalin / selaras
 
@@ -425,7 +425,7 @@ Helper backend: `App\Support\ActionMessage`.
 
 | File / Env | Keterangan |
 |------------|------------|
-| `APP_NAME` | Nama aplikasi (default: YAYASAN ITTIHAD PEKANBARU) |
+| `APP_NAME` | Nama aplikasi (default: MARKAZ_AL_AZIZ) |
 | `DB_*` | Koneksi database |
 | `VA_PREFIX` | Prefix 6 digit nomor virtual account siswa (default: `770000`). Digabung dengan NIS zero-pad 10 digit → VA 16 digit |
 | `FINANCE_JWT_KEY` | Kunci penandatangan JWT API pembayaran online VA/bank |

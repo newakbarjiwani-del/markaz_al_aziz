@@ -26,7 +26,7 @@ class PortalAccessTokenService
     public function issueForOrangTua(OrangTua $orangTua, ?Siswa $contextStudent = null, ?int $createdBy = null): array
     {
         $user = PortalUserProvisioner::forOrangTua($orangTua);
-        $children = $orangTua->siswa()->where('status', \App\Models\Siswa::STATUS_ACTIVE)->orderBy('name')->get();
+        $children = $orangTua->siswa()->where('status', Siswa::STATUS_ACTIVE)->orderBy('name')->get();
         $studentNames = $children->pluck('name')->all();
 
         if ($contextStudent && ! in_array($contextStudent->name, $studentNames, true)) {
@@ -236,7 +236,7 @@ class PortalAccessTokenService
     /** @param list<string> $studentNames */
     private function buildInviteMessage(string $recipientName, array $studentNames, string $accessUrl, string $role): string
     {
-        $appName = config('portal.app_name', 'ITTIHAD APP');
+        $appName = config('portal.app_name', 'MARKAZ_AL_AZIZ');
         $portalLabel = $role === 'orang_tua' ? 'Parent' : 'Siswa';
         $studentsText = implode(', ', $studentNames);
         $studentPhrase = count($studentNames) > 1 ? 'anak-anak Anda' : 'anak Anda';
@@ -245,7 +245,7 @@ class PortalAccessTokenService
             ."Anda telah diberikan akses ke dashboard {$appName} {$portalLabel} "
             ."untuk melihat informasi {$studentPhrase} ({$studentsText}).\n\n"
             ."Klik link berikut untuk masuk:\n{$accessUrl}\n\n"
-            ."Link berlaku ".config('portal.access_token_ttl_days', 7)." hari. "
+            .'Link berlaku '.config('portal.access_token_ttl_days', 7).' hari. '
             ."Jangan bagikan link ini kepada pihak lain.\n\nTerima kasih.";
     }
 
