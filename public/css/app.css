@@ -1,47 +1,47 @@
-/* —— Design tokens (brand: Yayasan Kesatuan Pendidikan Islam / Al-Ittihad) —— */
+/* —— Design tokens (brand: MARKAZ_AL_AZIZ / Muslimah Qur'anic Center) —— */
 :root {
-    --color-primary-50: #eefbf5;
-    --color-primary-100: #d3f4e4;
-    --color-primary-200: #a7e8ca;
-    --color-primary-300: #6ed8a7;
-    --color-primary-400: #28bc79;
-    --color-primary-500: #189e61;
-    --color-primary-600: #12834f;
-    --color-primary-700: #077844;
-    --color-primary-800: #055e36;
-    --color-primary-900: #03492a;
-    --color-primary-950: #012917;
+    --color-primary-50: #faf6f2;
+    --color-primary-100: #f0e6dc;
+    --color-primary-200: #e0c4a8;
+    --color-primary-300: #c9986e;
+    --color-primary-400: #a86b38;
+    --color-primary-500: #8c4600;
+    --color-primary-600: #6e3c0a;
+    --color-primary-700: #5c3317;
+    --color-primary-800: #4a2912;
+    --color-primary-900: #3a1f0e;
+    --color-primary-950: #241308;
 
-    --color-accent-50: #fffde6;
-    --color-accent-100: #fffbbf;
-    --color-accent-200: #fff680;
-    --color-accent-300: #fdf042;
-    --color-accent-400: #f7e81b;
-    --color-accent-500: #f3ea0e;
-    --color-accent-600: #d4cb07;
-    --color-accent-700: #a49d03;
-    --color-accent-800: #777207;
-    --color-accent-900: #5a570c;
-    --color-accent-950: #343204;
+    --color-accent-50: #fbf8ef;
+    --color-accent-100: #f5edd4;
+    --color-accent-200: #ead9a8;
+    --color-accent-300: #dcc476;
+    --color-accent-400: #c9a84f;
+    --color-accent-500: #b08d3e;
+    --color-accent-600: #967528;
+    --color-accent-700: #755c1f;
+    --color-accent-800: #5c4819;
+    --color-accent-900: #4a3a16;
+    --color-accent-950: #2a210c;
 
-    --surface-page: #f2f9f5;
+    --surface-page: #faf7f2;
     --surface-card: #ffffff;
-    --surface-muted: #e8f5ee;
-    --surface-border: #bfe5d3;
-    --surface-border-strong: #82cca8;
-    --surface-border-subtle: #dcf0e5;
-    --text-primary: #0a1c13;
-    --text-secondary: #1b4f35;
-    --text-muted: #4a7862;
-    --shadow-sm: 0 1px 2px rgb(10 28 19 / 0.04), 0 1px 3px rgb(10 28 19 / 0.05);
-    --shadow-md: 0 4px 14px rgb(10 28 19 / 0.06), 0 2px 4px rgb(10 28 19 / 0.04);
-    --shadow-lg: 0 12px 32px rgb(10 28 19 / 0.12), 0 4px 10px rgb(10 28 19 / 0.08);
+    --surface-muted: #f3ebe3;
+    --surface-border: #e0d0c0;
+    --surface-border-strong: #c9a88a;
+    --surface-border-subtle: #efe6dc;
+    --text-primary: #241308;
+    --text-secondary: #5c3317;
+    --text-muted: #8a6a4e;
+    --shadow-sm: 0 1px 2px rgb(36 19 8 / 0.04), 0 1px 3px rgb(36 19 8 / 0.05);
+    --shadow-md: 0 4px 14px rgb(36 19 8 / 0.06), 0 2px 4px rgb(36 19 8 / 0.04);
+    --shadow-lg: 0 12px 32px rgb(36 19 8 / 0.12), 0 4px 10px rgb(36 19 8 / 0.08);
     --radius-md: 0.625rem;
     --radius-lg: 0.75rem;
-    --focus-ring: 0 0 0 3px rgb(24 158 97 / 0.22);
-    --scrollbar-thumb: #a7e8ca;
-    --scrollbar-thumb-hover: #6ed8a7;
-    --meta-theme-color: #f2f9f5;
+    --focus-ring: 0 0 0 3px rgb(140 70 0 / 0.22);
+    --scrollbar-thumb: #e0c4a8;
+    --scrollbar-thumb-hover: #c9986e;
+    --meta-theme-color: #faf7f2;
 
     /* Spacing scale — shared by kit components (buttons, forms, cards, filters, modals, DT) */
     --space-1: 0.25rem;
@@ -71,22 +71,22 @@
 
 .dark {
     color-scheme: dark;
-    --surface-page: #09140e;
-    --surface-card: #101e17;
-    --surface-muted: #16281f;
-    --surface-border: #244234;
-    --surface-border-strong: #345e4a;
-    --surface-border-subtle: #193126;
-    --text-primary: #eef9f3;
-    --text-secondary: #9ecfba;
-    --text-muted: #6ea38c;
+    --surface-page: #1a100a;
+    --surface-card: #24180f;
+    --surface-muted: #2e1f14;
+    --surface-border: #4a3524;
+    --surface-border-strong: #6e4e32;
+    --surface-border-subtle: #332318;
+    --text-primary: #faf6f2;
+    --text-secondary: #e0c4a8;
+    --text-muted: #c9986e;
     --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
     --shadow-md: 0 4px 14px rgb(0 0 0 / 0.35);
     --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.5), 0 4px 10px rgb(0 0 0 / 0.35);
-    --focus-ring: 0 0 0 3px rgb(40 188 121 / 0.28);
-    --scrollbar-thumb: #055e36;
-    --scrollbar-thumb-hover: #12834f;
-    --meta-theme-color: #09140e;
+    --focus-ring: 0 0 0 3px rgb(176 141 62 / 0.32);
+    --scrollbar-thumb: #4a2912;
+    --scrollbar-thumb-hover: #6e3c0a;
+    --meta-theme-color: #1a100a;
 }
 
 html {
@@ -4724,7 +4724,7 @@ input[type="time"].form-input {
 }
 
 .pembayaran-tagihan-row--selectable:focus-visible {
-    outline: 2px solid var(--color-primary-500, #0a7f49);
+    outline: 2px solid var(--color-primary-500, #8c4600);
     outline-offset: -2px;
 }
 
@@ -4741,7 +4741,7 @@ input[type="time"].form-input {
 }
 
 .tagihan-wa-row--selectable:focus-visible {
-    outline: 2px solid var(--color-primary-500, #0a7f49);
+    outline: 2px solid var(--color-primary-500, #8c4600);
     outline-offset: -2px;
 }
 
@@ -4765,7 +4765,7 @@ input[type="time"].form-input {
 }
 
 .tagihan-wa-siswa__phone--ok {
-    color: var(--color-primary-700, #0a7f49);
+    color: var(--color-primary-700, #5c3317);
 }
 
 .tagihan-wa-siswa__phone--missing {
@@ -5541,12 +5541,12 @@ input[type="time"].form-input {
     width: 1.25rem;
     height: 1.25rem;
     border-radius: 9999px;
-    color: #0a7f49;
-    background: #ecfdf5;
+    color: #6e3c0a;
+    background: #faf6f2;
 }
 
 .dark .student-prestasi-badge {
-    color: #86efac;
+    color: #e0c4a8;
     background: #14532d;
 }
 
@@ -6547,22 +6547,22 @@ input[type="time"].form-input {
 }
 
 .btn-action-generate {
-    color: #0a7f49;
-    background: #f3f7f1;
-    border-color: #b8c9b0;
+    color: #6e3c0a;
+    background: #faf6f2;
+    border-color: #e0c4a8;
 }
 
 .btn-action-generate:hover {
-    background: #e6efe3;
-    border-color: #0a7f49;
+    background: #f0e6dc;
+    border-color: #6e3c0a;
 }
 
 .row-action-menu-item--generate {
-    color: #0a7f49;
+    color: #6e3c0a;
 }
 
 .row-action-menu-item--generate:hover {
-    background: #f3f7f1;
+    background: #faf6f2;
 }
 
 .dark .btn-action-wa {
@@ -6583,9 +6583,9 @@ input[type="time"].form-input {
 }
 
 .dark .btn-action-generate {
-    color: #b8c9b0;
-    background: #1a2e14;
-    border-color: #0a7f49;
+    color: #e0c4a8;
+    background: #2e1f14;
+    border-color: #6e3c0a;
 }
 
 .dark .btn-action-generate:hover {

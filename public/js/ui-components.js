@@ -6,9 +6,9 @@
     window.initUiCharts = function () {
         if (typeof Chart === 'undefined') return;
 
-        var primary = cssVar('--color-primary-600') || '#0a7f49';
-        var primaryLight = cssVar('--color-primary-300') || '#5ab47e';
-        var accent = cssVar('--color-accent-500') || '#ebe21a';
+        var primary = cssVar('--color-primary-600') || '#6e3c0a';
+        var primaryLight = cssVar('--color-primary-300') || '#c9986e';
+        var accent = cssVar('--color-accent-500') || '#b08d3e';
         var isDark = document.documentElement.classList.contains('dark');
         var grid = isDark ? 'rgba(148,163,184,0.15)' : 'rgba(148,163,184,0.25)';
         var text = isDark ? '#94a3b8' : '#64748b';

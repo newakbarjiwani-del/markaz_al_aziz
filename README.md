@@ -15,11 +15,15 @@ Proyek ini mengikuti arsitektur, skema, modul, dan konvensi **Serang Nurul Muhta
 
 Sudah disalin dari Serang: `public/pwa/`, `templates/`, `vendor/` (aset frontend, mis. WhatsApp editor — **bukan** Composer `vendor/`), CSS fitur, JS yang belum ada, `buku.json`, `bun.lock`. `public/storage` via `php artisan storage:link`. Template gambar kartu Serang (`kartu_depan.png` / `kartu_belakang.jpeg`) **tidak dipakai** — kartu pelajar/guru memakai HTML/CSS Ittihad.
 
-**Warna brand Ittihad dipertahankan** di `public/css/app.css` (dan file CSS yang sudah ada) serta `@theme` di `layouts/partials/head` — primary forest green `#189e61` / accent `#f3ea0e`. Jangan timpa dengan palet Serang (`#516b48` / `#b8992a`).
+**Warna brand Markaz** di `public/css/app.css` serta `@theme` di `layouts/partials/head` — primary cokelat `#8c4600` / accent emas `#b08d3e` (dari logo Muslimah Qur'anic Center). Logo di `public/logo.png`. Jangan kembalikan palet Ittihad hijau `#189e61` / kuning `#f3ea0e` atau Serang (`#516b48` / `#b8992a`).
 
 Composer PHP `vendor/` tidak disalin: jalankan `composer install` lokal (catatan: `composer.json` belum 100% identik dengan Serang — DomPDF/Excel vs phpspreadsheet, versi framework/Pest).
 
 Dokumentasi wajah: `Rekam_Wajah.md`, `deteksi_wajah.md`.
+
+Alur Tahfidz (halaqoh, rekap minggu, WA wali): [`docs/tahfidz-alur.md`](docs/tahfidz-alur.md).
+
+Cara bayar tagihan (kasir, VA, saldo ortu, QRIS): [`docs/keuangan-bayar-tagihan.md`](docs/keuangan-bayar-tagihan.md).
 
 Konvensi agen: [`.ai/rules/`](.ai/rules/).
 
@@ -37,10 +41,11 @@ Modul lengkap untuk administrator dan super admin:
 | **Manajemen Siswa** | Data siswa (NIS numerik, nomor VA, **status tinyint** `0` nonaktif / `1` aktif / `2` menunggu; siswa non-aktif tidak bisa transaksi), detail siswa (edit, **foto profil** untuk kartu pelajar, **rekam wajah** terpisah untuk absensi, portal, hapus), **Profil Siswa** (edit nama panggilan/gol. darah; filter cari, kelas, status), orang tua (data ayah & ibu terpisah), riwayat akademik, pindah kelas, kartu pelajar, berkas, **import Excel** (pratinjau dua langkah / **data import sementara** 2 jam; **ekspor** lewat Data Siswa Excel/PDF), **link login portal** (WhatsApp / salin / cabut); form siswa: peringatan + konfirmasi jika ubah NIS (memengaruhi No. VA) |
 | **Manajemen Guru** | Data guru (filter sekolah opsional), **detail guru** + kartu guru, **akun login portal** (buat/reset password), **Profil Guru** (read-only: filter cari NIP/nama/jabatan, sekolah, status), kartu guru, riwayat mengajar, **import Excel** (pratinjau dua langkah; **ekspor** lewat Data Guru Excel/PDF) |
 | **Prestasi & Pelanggaran** | Dashboard (rekap terbanyak), CRUD prestasi/pelanggaran siswa & guru + upload bukti (gambar → WebP, lightbox), **Rekap per Siswa** (filter tanggal / nama-NIS / min poin), **Hukuman Siswa** (hanya siswa dengan total poin pelanggaran **≥ 250** — daftar eligible + terbit; `HUKUMAN_MIN_POINTS`), **Katalog Prestasi** (kosong awal), **Katalog Pelanggaran** (152 jenis dari form sekolah), import Excel NIS-keyed |
-| **Keuangan SPP** | Tagihan, pembayaran kasir multi-tagihan (kuitansi `pembayaran` + baris `pembayaran_detail`), **API online VA/bank** (`sccttran`, `saldo_keuangan`), riwayat kuitansi, **Saldo Siswa** (hanya saldo > 0; `show()` juga mengembalikan `cashless_balance`), **Pindah Saldo** keuangan → cashless (summary hidden by default, estimasi saldo cashless setelah pindah), laporan, rekening |
+| **Keuangan SPP** | Tagihan, pembayaran kasir multi-tagihan (kuitansi `pembayaran` + baris `pembayaran_detail`), **QRIS** (generate + pushNotif), **API online VA/bank** (`sccttran`, `saldo_keuangan`), riwayat kuitansi, **Saldo Siswa**, **Pindah Saldo**, laporan. Panduan: [`docs/keuangan-bayar-tagihan.md`](docs/keuangan-bayar-tagihan.md) |
 | **Absensi** | Absensi siswa & guru, QR check-in, **Absensi RFID** (kiosk), rekap, laporan, export |
 | **Cashless** | Dompet digital, uang saku, top-up / **tarik saldo** manual (`sccttran_cashless`, tarik: `FIDBANK=CASH`), **PIN cashless** (wajib hanya tarik di atas limit harian), transaksi, **Saldo Cashless** (hanya saldo > 0; detail modal dengan gap form-section), **Saldo RFID (Kiosk)** (tap kartu → saldo cashless; panel saldo keuangan disiapkan tapi disembunyikan / belum memanggil API finance), **Top-up & Tarik Saldo** (summary section hidden by default, **Saldo Akhir** ditampilkan, modalReset reset form), **Transfer Kantin** (`saldo_us` → `saldo_kantin`), **Pengajuan Tambahan** uang saku (approve admin), **Kontrol RFID** (UID, blokir kartu, set/reset PIN), menu kantin, limit kontrol, **Pendapatan Kantin** (omzet POS + **Sisa belum ditarik**), **Tarik Tunai** settlement (`penarikan_pendapatan_kantin`, cash handoff — tidak membalik BELANJA siswa), **Riwayat Penarikan** |
 | **Perpustakaan** | Katalog buku (**CRUD** modal + import Excel inventaris Kemenag), peminjaman, pengembalian, denda, **Setting Denda**, rating & review |
+| **Tahfidz** | Program/angkatan, **halaqoh** (bukan kelas sekolah), jadwal setoran, rekap minggu (tatsbit, murojaah, absensi hadir/sakit/pulang), kirim WA ke wali (`wa.me`); progress ayat & target terpisah. Panduan: [`docs/tahfidz-alur.md`](docs/tahfidz-alur.md) |
 
 Setiap modul memiliki halaman **Setting** yang dikonfigurasi melalui `config/module-settings.php` (item **Setting** modul Keuangan disembunyikan dari sidebar admin; route tetap dapat diakses langsung).
 
@@ -48,9 +53,9 @@ Setiap modul memiliki halaman **Setting** yang dikonfigurasi melalui `config/mod
 
 | Peran | Prefix | Akses |
 |-------|--------|-------|
-| **Guru** | `/portal/guru` | Absensi siswa (RFID / manual / deteksi wajah), rekap siswa, absensi pribadi, profil, **Prestasi & Pelanggaran** (CRUD **semua siswa**, bukan hanya kelas ajar) |
-| **Orang Tua** | `/portal/ortu` | Data anak terhubung (termasuk alamat), tagihan (**No. VA**), **saldo keuangan**, bayar dari saldo, **pindah saldo** keuangan → cashless (summary hidden by default, estimasi saldo cashless setelah pindah), **cashless** (saldo & transaksi + detail, PIN), absensi, perpustakaan, **Link Login** (magic URL), **Prestasi Siswa** (lihat anak; menu Pelanggaran disembunyikan) |
-| **Siswa** | `/portal/siswa` | Dashboard sapaan interaktif, profil (alamat; tanpa agama), rekam wajah, tagihan (**No. VA**), pembayaran, absensi, dompet, perpustakaan, **Link Login**, **Prestasi & Pelanggaran** (lihat diri sendiri) |
+| **Guru** | `/portal/guru` | Absensi siswa (RFID / manual / deteksi wajah), rekap siswa, absensi pribadi, profil, **Prestasi & Pelanggaran** (CRUD **semua siswa**, bukan hanya kelas ajar), **Rekap Tahfidz** (halaqoh sendiri) |
+| **Orang Tua** | `/portal/ortu` | Data anak terhubung (termasuk alamat), tagihan (**No. VA**), **saldo keuangan**, bayar dari saldo, **pindah saldo** keuangan → cashless (summary hidden by default, estimasi saldo cashless setelah pindah), **cashless** (saldo & transaksi + detail, PIN), absensi, perpustakaan, **Link Login** (magic URL), **Prestasi Siswa** (lihat anak; menu Pelanggaran disembunyikan), rekap tahfidz anak (baca) |
+| **Siswa** | `/portal/siswa` | Dashboard sapaan interaktif, profil (alamat; tanpa agama), rekam wajah, tagihan (**No. VA**), pembayaran, absensi, dompet, perpustakaan, **Link Login**, **Prestasi & Pelanggaran** (lihat diri sendiri), mushaf/progress tahfidz |
 | **Kantin** | `/portal/kantin` | Dashboard sapaan + omzet, transaksi, menu, scan |
 | **Pimpinan** | `/portal/pimpinan` | Dashboard ringkasan absensi/keuangan/kantin + laporan; juga **kelola Prestasi & Pelanggaran** di admin (CRUD + katalog + hukuman) |
 | **Perpustakaan** | `/portal/perpustakaan` | Dashboard + katalog CRUD, import, peminjaman/pengembalian (siswa/guru/tamu), denda, setting denda, rekap pengunjung |
@@ -142,7 +147,7 @@ Akses dari **navbar** (klik nama) atau menu sidebar **Profil Akun** (otomatis di
 - Export mengambil semua baris terfilter (bukan hanya halaman aktif) dengan batas aman 3000 baris, ringkasan filter di XLSX/PDF, dan tombol export terkunci saat proses berjalan
 - Import data Excel (.xlsx / .xls) untuk **siswa** dan **guru** — kolom template ditampilkan di kartu Import, unduh template, unggah file, **Buat Pratinjau** → pilih metode penyimpanan → **Proses Import**; pratinjau disimpan sebagai **data import sementara** 2 jam dengan paginasi; tombol **Hapus Data Import Sementara**; super admin memilih **sekolah tujuan import**
 - Upload **foto profil** siswa/guru via form/FilePond (kartu pelajar, identitas); file disimpan sebagai **WebP** (`ImageConverter`). **Rekam wajah** terpisah via kamera (base64 di `siswa_wajah`) untuk absensi. UID kartu siswa/guru tersimpan secara global-unik di tabel `rfid`; field HTTP tetap `rfid_uid`.
-- **Kartu pelajar/guru** — pratinjau di galeri admin/portal dan halaman detail siswa/guru; **cetak** memakai `id-card.js` (clone kartu di halaman yang sama lalu `window.print()` agar hasil cetak sama dengan pratinjau). Siswa dan guru memakai **layout HTML/CSS** (`components/id-card/*`) dengan branding Ittihad — tanpa template gambar Serang.
+- **Kartu pelajar/guru** — pratinjau di galeri admin/portal dan halaman detail siswa/guru; **cetak** memakai `id-card.js` (clone kartu di halaman yang sama lalu `window.print()` agar hasil cetak sama dengan pratinjau). Siswa dan guru memakai **layout HTML/CSS** (`components/id-card/*`) dengan branding Markaz — tanpa template gambar Serang.
 - Login dengan **username atau email** dalam satu field
 
 ## Tech Stack

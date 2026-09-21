@@ -18,14 +18,14 @@ return [
 
     'description' => env('PWA_DESCRIPTION', 'Portal sekolah MARKAZ_AL_AZIZ — absensi, keuangan, dompet digital, dan perpustakaan.'),
 
-    'theme_color' => '#189e61',
+    'theme_color' => '#8c4600',
 
-    'background_color' => '#f2f9f5',
+    'background_color' => '#faf7f2',
 
-    'theme_color_dark' => '#09140e',
+    'theme_color_dark' => '#1a100a',
 
-    'background_color_dark' => '#09140e',
+    'background_color_dark' => '#1a100a',
 
-    'cache_version' => env('PWA_CACHE_VERSION', '3'),
+    'cache_version' => env('PWA_CACHE_VERSION', '4'),
 
 ];

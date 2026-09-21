@@ -40,6 +40,7 @@
         var paymentTotalLabel = document.getElementById('payment-total-label');
         var selectAllCheckbox = document.getElementById('select-all-tagihan');
         var openPaymentBtn = document.getElementById('open-payment-btn');
+        var openQrisBtn = document.getElementById('open-qris-btn');
         var fidbankSelect = document.getElementById('payment-fidbank');
         var referenceInput = document.getElementById('payment-reference');
         var referenceHint = document.getElementById('payment-reference-hint');
@@ -493,6 +494,75 @@
 
         openPaymentBtn?.addEventListener('click', openPaymentForm);
 
+        openQrisBtn?.addEventListener('click', async function () {
+            if (!config.qrisEnabled || !config.qrisUrl || !selectedStudent) {
+                window.showAlert?.({
+                    title: 'QRIS belum aktif',
+                    message: 'Aktifkan QRIS_ENABLED atau pilih siswa terlebih dahulu.',
+                    variant: 'warning',
+                });
+                return;
+            }
+
+            var selected = getSelectedItems();
+            if (!selected.length) {
+                window.showAlert?.({
+                    title: 'Periksa Data',
+                    message: 'Pilih minimal satu tagihan untuk dibayar via QRIS.',
+                    variant: 'warning',
+                });
+                return;
+            }
+
+            var total = selected.reduce(function (sum, item) {
+                return sum + Number(item.remaining || 0);
+            }, 0);
+
+            var original = openQrisBtn.innerHTML;
+            openQrisBtn.disabled = true;
+            openQrisBtn.innerHTML = 'Membuat QR...';
+
+            try {
+                var response = await fetch(config.qrisUrl, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+                    },
+                    body: JSON.stringify({
+                        siswa_id: selectedStudent.id,
+                        tagihan_ids: selected.map(function (item) { return item.id; }),
+                    }),
+                });
+                var payload = await response.json();
+                if (!response.ok || !payload.success) {
+                    throw new Error(payload.message || 'Gagal membuat QRIS');
+                }
+
+                var qris = payload.data.qris || {};
+                window.QrisPaymentUi?.open({
+                    qris: qris,
+                    statusUrl: '/admin/keuangan/pembayaran/qris/' + qris.id,
+                    checkUrl: '/admin/keuangan/pembayaran/qris/' + qris.id + '/check',
+                    onPaid: function () {
+                        window.showToast?.('Pembayaran QRIS berhasil.', 'success');
+                        loadStudentTagihan(selectedStudent);
+                    },
+                });
+            } catch (err) {
+                window.showAlert?.({
+                    title: 'QRIS Gagal',
+                    message: err.message || 'Tidak dapat membuat QRIS.',
+                    variant: 'danger',
+                });
+            } finally {
+                openQrisBtn.disabled = false;
+                openQrisBtn.innerHTML = original;
+            }
+        });
+
         fidbankSelect?.addEventListener('change', syncReferenceField);
 
         searchContainer?.addEventListener('student-selected', function (e) {
@@ -577,6 +647,8 @@
         initPembayaranPage({
             searchContainerId: 'pembayaran-student-search',
             tagihanUrlBase: root.dataset.tagihanUrl,
+            qrisUrl: root.dataset.qrisUrl || '',
+            qrisEnabled: root.dataset.qrisEnabled === '1',
             fidbankTunai: root.dataset.fidbankTunai || '1140000',
             fidbankSaldo: root.dataset.fidbankSaldo || '1140002',
         });

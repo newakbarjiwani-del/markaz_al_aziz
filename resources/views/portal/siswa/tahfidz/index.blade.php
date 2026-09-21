@@ -111,4 +111,16 @@
         @endforelse
     </section>
 </div>
+
+<section class="mt-4 card p-5">
+    <h2 class="mb-3 text-lg font-semibold">Rekap halaqoh</h2>
+    @forelse($rekaps as $row)
+        <div class="border-b border-slate-100 py-3 text-sm last:border-0 dark:border-slate-800">
+            <p class="font-medium">{{ $row->rekap?->program?->label() }} · {{ $row->rekap?->periodLabel() }}</p>
+            <p class="text-slate-500">{{ $row->halaqoh?->displayName() }} · Tatsbit {{ $row->tatsbitLabel() }} · Total {{ $row->total_juz }} juz</p>
+        </div>
+    @empty
+        <p class="text-sm text-slate-500">Belum ada rekap mingguan.</p>
+    @endforelse
+</section>
 @endsection

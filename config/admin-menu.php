@@ -115,9 +115,13 @@ return [
         'icon' => 'book-2',
         'children' => [
             ['label' => 'Dashboard', 'route' => 'admin.tahfidz.dashboard'],
+            ['label' => 'Program', 'route' => 'admin.tahfidz.program.index'],
+            ['label' => 'Halaqoh', 'route' => 'admin.tahfidz.halaqoh.index'],
+            ['label' => 'Jadwal', 'route' => 'admin.tahfidz.jadwal.index'],
+            ['label' => 'Rekap', 'route' => 'admin.tahfidz.rekap.index'],
+            ['label' => 'Kirim WA', 'route' => 'admin.tahfidz.kirim-wa.index'],
             ['label' => 'Progress', 'route' => 'admin.tahfidz.progress.index'],
             ['label' => 'Target', 'route' => 'admin.tahfidz.target.index'],
-            ['label' => 'Jadwal', 'route' => 'admin.tahfidz.jadwal.index'],
         ],
     ],
 

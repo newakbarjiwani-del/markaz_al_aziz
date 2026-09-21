@@ -2,14 +2,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" id="meta-theme-color" content="#f2f9f5">
-<meta name="theme-color" content="#f2f9f5" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#09140e" media="(prefers-color-scheme: dark)">
-<meta name="msapplication-navbutton-color" id="meta-ms-nav-color" content="#f2f9f5">
+<meta name="theme-color" id="meta-theme-color" content="#faf7f2">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a100a" media="(prefers-color-scheme: dark)">
+<meta name="msapplication-navbutton-color" id="meta-ms-nav-color" content="#faf7f2">
 <meta name="apple-mobile-web-app-status-bar-style" id="meta-apple-status-bar" content="default">
 <script>
     (function () {
-        var META_THEME_COLORS = { light: '#f2f9f5', dark: '#09140e' };
+        var META_THEME_COLORS = { light: '#faf7f2', dark: '#1a100a' };
 
         function applyMetaThemeColor(isDark) {
             var color = isDark ? META_THEME_COLORS.dark : META_THEME_COLORS.light;
@@ -68,29 +68,29 @@
 
 @theme {
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --color-primary-50: #eefbf5;
-    --color-primary-100: #d3f4e4;
-    --color-primary-200: #a7e8ca;
-    --color-primary-300: #6ed8a7;
-    --color-primary-400: #28bc79;
-    --color-primary-500: #189e61;
-    --color-primary-600: #12834f;
-    --color-primary-700: #077844;
-    --color-primary-800: #055e36;
-    --color-primary-900: #03492a;
-    --color-primary-950: #012917;
-    --color-accent-50: #fffde6;
-    --color-accent-100: #fffbbf;
-    --color-accent-200: #fff680;
-    --color-accent-300: #fdf042;
-    --color-accent-400: #f7e81b;
-    --color-accent-500: #f3ea0e;
-    --color-accent-600: #d4cb07;
-    --color-accent-700: #a49d03;
-    --color-accent-800: #777207;
-    --color-accent-900: #5a570c;
-    --color-accent-950: #343204;
+    --color-primary-50: #faf6f2;
+    --color-primary-100: #f0e6dc;
+    --color-primary-200: #e0c4a8;
+    --color-primary-300: #c9986e;
+    --color-primary-400: #a86b38;
+    --color-primary-500: #8c4600;
+    --color-primary-600: #6e3c0a;
+    --color-primary-700: #5c3317;
+    --color-primary-800: #4a2912;
+    --color-primary-900: #3a1f0e;
+    --color-primary-950: #241308;
+    --color-accent-50: #fbf8ef;
+    --color-accent-100: #f5edd4;
+    --color-accent-200: #ead9a8;
+    --color-accent-300: #dcc476;
+    --color-accent-400: #c9a84f;
+    --color-accent-500: #b08d3e;
+    --color-accent-600: #967528;
+    --color-accent-700: #755c1f;
+    --color-accent-800: #5c4819;
+    --color-accent-900: #4a3a16;
+    --color-accent-950: #2a210c;
 }
 </style>
-<link rel="stylesheet" href="{{ asset('css/app.css') }}?v=175">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}?v=176">
 @stack('styles')

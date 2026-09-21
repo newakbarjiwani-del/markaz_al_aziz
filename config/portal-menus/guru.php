@@ -14,6 +14,7 @@ return [
     ['label' => 'Booklet Sekolah', 'route' => 'portal.guru.booklet.index', 'icon' => 'book'],
 
     ['label' => 'Tahfidz', 'route' => 'portal.guru.tahfidz.index', 'icon' => 'book-2'],
+    ['label' => 'Rekap Tahfidz', 'route' => 'portal.guru.tahfidz.rekap.index', 'icon' => 'clipboard-list'],
 
     [
         'label' => 'Prestasi & Pelanggaran',

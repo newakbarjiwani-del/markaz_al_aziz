@@ -13,6 +13,8 @@
 
         var unpaidUrl = root.dataset.unpaidUrl || '';
         var payUrl = root.dataset.payUrl || '';
+        var qrisUrl = root.dataset.qrisUrl || '';
+        var qrisEnabled = root.dataset.qrisEnabled === '1';
         var defaultSiswaId = root.dataset.defaultSiswaId || '';
 
         var siswaSelect = document.getElementById('ortu-bayar-siswa');
@@ -25,6 +27,7 @@
         var totalLabel = document.getElementById('ortu-bayar-total-label');
         var hintEl = document.getElementById('ortu-bayar-hint');
         var submitBtn = document.getElementById('ortu-bayar-submit');
+        var qrisBtn = document.getElementById('ortu-bayar-qris');
 
         var state = {
             siswaId: '',
@@ -60,14 +63,18 @@
                         ? 'Pilih minimal satu tagihan untuk dibayar.'
                         : 'Tidak ada tagihan belum lunas.';
                 } else if (!enough) {
-                    hintEl.textContent = 'Saldo tidak mencukupi untuk total tagihan terpilih.';
+                    hintEl.textContent = 'Saldo tidak mencukupi untuk bayar dari saldo. Anda masih bisa bayar via QRIS.'
+                        + (qrisEnabled ? '' : '');
                 } else {
-                    hintEl.textContent = count + ' tagihan akan dibayar penuh dari saldo keuangan.';
+                    hintEl.textContent = count + ' tagihan siap dibayar (saldo atau QRIS).';
                 }
             }
 
             if (submitBtn) {
                 submitBtn.disabled = !(count > 0 && enough && state.siswaId);
+            }
+            if (qrisBtn) {
+                qrisBtn.disabled = !(qrisEnabled && count > 0 && total > 0 && state.siswaId);
             }
         }
 
@@ -250,6 +257,69 @@
             }
         }
 
+        async function submitQris() {
+            var ids = selectedIds();
+            var total = selectedTotal();
+            if (!qrisEnabled || !qrisUrl || !state.siswaId || !ids.length || total <= 0) return;
+
+            var original = qrisBtn?.innerHTML;
+            if (qrisBtn) {
+                qrisBtn.disabled = true;
+                qrisBtn.innerHTML = 'Membuat QR...';
+            }
+
+            try {
+                var response = await fetch(qrisUrl, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': csrfToken(),
+                    },
+                    body: JSON.stringify({
+                        siswa_id: Number(state.siswaId),
+                        tagihan_ids: ids,
+                    }),
+                });
+                var payload = await response.json();
+
+                if (!response.ok || !payload.success) {
+                    await window.showAlert?.({
+                        title: 'QRIS Gagal',
+                        message: payload.message || 'Tidak dapat membuat QRIS.',
+                        variant: 'danger',
+                    });
+                    return;
+                }
+
+                var qris = payload.data.qris || {};
+                document.querySelector('[data-modal-close="ortu-bayar-tagihan-modal"]')?.click();
+                document.getElementById('ortu-bayar-tagihan-modal')?.classList.add('hidden');
+                window.QrisPaymentUi?.open({
+                    qris: qris,
+                    statusUrl: '/portal/ortu/tagihan/qris/' + qris.id,
+                    checkUrl: '/portal/ortu/tagihan/qris/' + qris.id + '/check',
+                    onPaid: function () {
+                        window.showToast?.('Pembayaran QRIS berhasil.', 'success');
+                        window.reloadMainTable?.();
+                        loadUnpaid(state.siswaId);
+                    },
+                });
+            } catch (error) {
+                await window.showAlert?.({
+                    title: 'Koneksi Gagal',
+                    message: 'Tidak dapat terhubung ke server. Coba lagi.',
+                    variant: 'danger',
+                });
+            } finally {
+                if (qrisBtn) {
+                    qrisBtn.innerHTML = original;
+                    updateSummary();
+                }
+            }
+        }
+
         document.querySelector('[data-open-modal="ortu-bayar-tagihan-modal"]')?.addEventListener('click', function () {
             setTimeout(function () {
                 var siswaId = siswaSelect?.value || defaultSiswaId;
@@ -271,6 +341,9 @@
 
         submitBtn?.addEventListener('click', function () {
             submitPayment();
+        });
+        qrisBtn?.addEventListener('click', function () {
+            submitQris();
         });
     }
 

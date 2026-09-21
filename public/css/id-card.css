@@ -1,13 +1,13 @@
-/* ID Card — Yayasan Ittihad Pekanbaru
+/* ID Card — MARKAZ_AL_AZIZ / Muslimah Qur'anic Center
    Standard CR80 ratio: 85.6 × 54 mm ≈ 1.586:1 */
 
 :root {
-    --id-green: #189e61;
-    --id-green-dark: #077844;
-    --id-green-light: #28bc79;
-    --id-gold: #f3ea0e;
-    --id-gold-light: #fdf042;
-    --id-cream: #fafaf8;
+    --id-green: #8c4600;
+    --id-green-dark: #5c3317;
+    --id-green-light: #a86b38;
+    --id-gold: #b08d3e;
+    --id-gold-light: #dcc476;
+    --id-cream: #faf7f2;
     --id-card-w: 480px;
     --id-card-h: 302px; /* 480 × (996÷1580) — matches kartu_depan.png */
 }

@@ -8,20 +8,20 @@
 
   function palette() {
     return {
-      primary: cssVar('--color-primary-600', '#3f5c34'),
-      primaryLight: cssVar('--color-primary-300', '#9cb192'),
-      accent: cssVar('--color-accent-500', '#b8992a'),
-      green: cssVar('--color-primary-500', '#516b48'),
+      primary: cssVar('--color-primary-600', '#6e3c0a'),
+      primaryLight: cssVar('--color-primary-300', '#c9986e'),
+      accent: cssVar('--color-accent-500', '#b08d3e'),
+      green: cssVar('--color-primary-500', '#8c4600'),
       purple: '#7c6fa8',
       red: '#dc2626',
       grid: document.documentElement.classList.contains('dark')
         ? 'rgba(148,163,184,0.15)'
         : 'rgba(148,163,184,0.25)',
       colors: [
-        cssVar('--color-primary-600', '#3f5c34'),
-        cssVar('--color-accent-500', '#b8992a'),
-        cssVar('--color-primary-400', '#6f8764'),
-        cssVar('--color-primary-300', '#9cb192'),
+        cssVar('--color-primary-600', '#6e3c0a'),
+        cssVar('--color-accent-500', '#b08d3e'),
+        cssVar('--color-primary-400', '#a86b38'),
+        cssVar('--color-primary-300', '#c9986e'),
         '#7c6fa8',
         '#dc2626',
       ],

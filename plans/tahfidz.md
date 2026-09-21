@@ -1,7 +1,7 @@
 # Tahfidz Module Plan
 
-**Status:** Phase 0–1 complete. Phase 2–3 not started.  
-**Overview:** Greenfield Tahfidz (Quran memorization) module on the existing Blade admin/portal pattern. Voice and audio are out of scope. Default: seed Kemenag-style ayah text into the DB, then ship mushaf reader plus hafalan progress, then blanking and quiz, then in-app murajaah schedules.
+**Status:** Phase 0–1 complete. Phase 3 halaqoh/jadwal/rekap WA complete. Phase 2 (blanking/quiz) deferred.  
+**Overview:** Greenfield Tahfidz (Quran memorization) module on the existing Blade admin/portal pattern. Voice and audio are out of scope. Default: seed Kemenag-style ayah text into the DB, then ship mushaf reader plus hafalan progress. Operational Markaz flow uses halaqoh groups, weekly recap (tatsbit / murojaah partner / absensi), and parent `wa.me` messages. Blanking and quiz remain later.
 
 ## What Tahfidz means here
 
@@ -12,9 +12,9 @@
 - **Quran text:** seed Indonesian Kemenag-compatible surah/ayat JSON into the DB (offline; enables blanking and quiz). Not a runtime API; not scanned mushaf page images in MVP.
 - **Voice out:** no murattal player, no looping audio, no voice recorder, no audio tasmi.
 - **Setoran without voice:** status-based (siswa update + guru verify). Audio upload deferred.
-- **Reminders:** in-app jadwal murajaah only (no browser push / WhatsApp in first builds).
+- **Reminders:** weekly recap to parents via `wa.me` (`TahfidzRekapWhatsAppService`); no WhatsApp Business API.
 - **Stack:** Blade + kit JS (same as booklet / ujian) — no SPA.
-- **Roles:** admin oversee; **siswa** practice + progress; **guru** assign targets / verify; **ortu** read-only child progress.
+- **Roles:** admin oversee + send WA; **siswa** practice + read recap; **guru** fill own halaqoh recap / verify progress; **ortu** read-only child progress and weekly recap.
 
 ```mermaid
 flowchart LR
@@ -92,19 +92,22 @@ Mirror booklet/ujian registration:
 - Quiz: `tahfidz_quiz_attempt` + generated items (sambung ayat, tebak nomor ayat, tebak surah); score per siswa
 - Admin optional quiz settings; portal siswa play + history
 
-## Phase 3 — Jadwal murajaah (in-app)
+## Phase 3 — Halaqoh, jadwal, rekap WA
 
-- `tahfidz_schedule` — siswa_id, weekday/time, range ref, active
-- Portal siswa/ortu upcoming; admin/guru manage
-- Reminder = due-today badge/list on portal dashboard (push/WA later, documented hook)
+Operational Markaz recap (not `kelas` / school absensi):
+
+- `tahfidz_program`, `tahfidz_halaqoh`, `tahfidz_halaqoh_anggota`, `tahfidz_jadwal`
+- `tahfidz_rekap` + `tahfidz_rekap_siswa` (tatsbit/murojaah juz lists, hadir/sakit/pulang, total juz, prestasi)
+- `TahfidzRekapComposer` builds the group text; child WA is per siswa
+- Guru portal scoped to `guru_id`; admin Kirim WA uses `WhatsAppLink`
 
 ## Conventions
 
 - Controllers: `Admin\Tahfidz\*`, `Portal\Siswa\Tahfidz*`, `Portal\Guru\Tahfidz*`, `Portal\OrangTua\Tahfidz*`
 - Form Requests under `Http/Requests/Tahfidz/`
-- Services: `TahfidzProgressService`, `TahfidzQuizService` (no audio)
+- Services: `TahfidzProgressService`, `TahfidzRekapComposer`, `TahfidzRekapService`, `TahfidzRekapWhatsAppService` (no audio)
 - No in-page `master-data-nav`; sidebar + launcher only
-- Tests: `tests/Feature/TahfidzModuleTest.php` (authz, school scope, progress transitions, quiz scoring)
+- Tests: `tests/Feature/TahfidzModuleTest.php`, `tests/Feature/TahfidzHalaqohRekapTest.php`
 - Pint + narrow Pest after each phase
 
 ## Build order when implementing
@@ -121,6 +124,6 @@ Mirror booklet/ujian registration:
 - [x] Phase 1a: `tahfidz_surah`/`ayat` schema + Kemenag JSON seeder + mushaf reader UI
 - [x] Phase 1b: targets, progress statuses, murajaah log; admin + siswa/guru/ortu portals
 - [ ] Phase 2: blanking modes + sambung-ayat/quiz attempts
-- [ ] Phase 3: in-app murajaah schedules + due-today portal surfaces (no push/WA)
+- [x] Phase 3: halaqoh + jadwal + weekly recap + parent `wa.me`
 
 Voice/audio stays a later epic and must not block Phases 0–3.

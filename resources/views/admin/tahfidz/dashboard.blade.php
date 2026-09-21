@@ -7,9 +7,10 @@
     <x-dashboard.launcher
         class="mb-6"
         :actions="[
-            ['label' => 'Progress', 'route' => 'admin.tahfidz.progress.index', 'icon' => 'chart-bar', 'tone' => 'success'],
-            ['label' => 'Target', 'route' => 'admin.tahfidz.target.index', 'icon' => 'flag', 'tone' => 'primary'],
+            ['label' => 'Halaqoh', 'route' => 'admin.tahfidz.halaqoh.index', 'icon' => 'users', 'tone' => 'primary'],
             ['label' => 'Jadwal', 'route' => 'admin.tahfidz.jadwal.index', 'icon' => 'calendar-event', 'tone' => 'info'],
+            ['label' => 'Rekap', 'route' => 'admin.tahfidz.rekap.index', 'icon' => 'clipboard-list', 'tone' => 'success'],
+            ['label' => 'Kirim WA', 'route' => 'admin.tahfidz.kirim-wa.index', 'icon' => 'brand-whatsapp', 'tone' => 'warning'],
         ]"
     />
 

@@ -6,6 +6,8 @@
 <div id="ortu-tagihan-page"
      data-unpaid-url="{{ route('portal.ortu.tagihan.unpaid') }}"
      data-pay-url="{{ route('portal.ortu.tagihan.bayar') }}"
+     data-qris-url="{{ route('portal.ortu.tagihan.qris.store') }}"
+     data-qris-enabled="{{ config('finance.qris.enabled') ? '1' : '0' }}"
      data-default-siswa-id="{{ $children->count() === 1 ? $children->first()->id : '' }}">
     <div class="card mb-6 p-5">
         <div class="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-3">
@@ -26,7 +28,7 @@
 
     <x-admin.datatable-page
         title="Daftar Tagihan"
-        subtitle="Bayar tagihan belum lunas menggunakan saldo keuangan anak."
+        subtitle="Bayar tagihan belum lunas dari saldo keuangan atau QRIS."
         :ajax-url="route('portal.ortu.tagihan.data')"
         :columns="['NIS', 'No. VA', 'Nama', 'Kelas', 'Jenis', 'Periode', 'Nominal', 'Terbayar', 'Sisa', 'Status', 'Metode', 'Tgl. Lunas', 'Jatuh Tempo']"
         :column-options="[1 => ['html' => true, 'exportable' => true]]"
@@ -34,7 +36,7 @@
         @if($children->isNotEmpty())
             <x-slot:actions>
                 <button type="button" class="btn-primary" data-open-modal="ortu-bayar-tagihan-modal">
-                    <x-icon name="wallet" size="sm" class="mr-1" /> Bayar dari Saldo Keuangan
+                    <x-icon name="wallet" size="sm" class="mr-1" /> Bayar Tagihan
                 </button>
             </x-slot:actions>
         @endif
@@ -49,7 +51,7 @@
 @endsection
 
 @push('modals')
-<x-modal id="ortu-bayar-tagihan-modal" title="Bayar Tagihan dari Saldo Keuangan">
+<x-modal id="ortu-bayar-tagihan-modal" title="Bayar Tagihan">
     <div class="space-y-5">
         <section class="form-section">
             <h4 class="form-section__title">Pilih Anak</h4>
@@ -92,10 +94,15 @@
             </div>
         </section>
 
-        <div class="modal-panel__footer flex justify-end gap-2">
+        <div class="modal-panel__footer flex flex-wrap justify-end gap-2">
             <button type="button" data-modal-close="ortu-bayar-tagihan-modal" class="btn-secondary">Batal</button>
+            @if(config('finance.qris.enabled'))
+                <button type="button" id="ortu-bayar-qris" class="btn-secondary" disabled>
+                    <x-icon name="qrcode" size="sm" class="mr-1" /> Bayar QRIS
+                </button>
+            @endif
             <button type="button" id="ortu-bayar-submit" class="btn-primary" disabled>
-                <x-icon name="cash" size="sm" class="mr-1" /> Bayar dari Saldo Keuangan
+                <x-icon name="cash" size="sm" class="mr-1" /> Bayar dari Saldo
             </button>
         </div>
     </div>
@@ -103,5 +110,6 @@
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/portal-ortu-bayar-tagihan.js') }}?v=2"></script>
+<script src="{{ asset('js/qris-payment.js') }}?v=2"></script>
+<script src="{{ asset('js/portal-ortu-bayar-tagihan.js') }}?v=4"></script>
 @endpush

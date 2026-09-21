@@ -258,6 +258,13 @@
                 buttonIcon: 'ti-check',
                 defaultText: 'Ya, Lanjutkan',
             },
+            info: {
+                headerClass: 'app-dialog__header--info',
+                headerIcon: 'ti-info-circle',
+                buttonClass: 'btn-primary',
+                buttonIcon: 'ti-check',
+                defaultText: 'Ya, Lanjutkan',
+            },
             warning: {
                 headerClass: 'app-dialog__header--warning',
                 headerIcon: 'ti-alert-triangle',

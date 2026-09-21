@@ -66,4 +66,23 @@ return [
         ['min' => 1000001,  'max' => null,     'amount' => 10000],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | QRIS (Lazismu / ICT server 103.23.103.43)
+    |--------------------------------------------------------------------------
+    */
+
+    'qris' => [
+        'enabled' => (bool) env('QRIS_ENABLED', false),
+        'generate_url' => env('QRIS_GENERATE_URL', 'http://103.23.103.43/qris/lazizmu_diy/server.php'),
+        'jwt_key' => env('QRIS_JWT_KEY', env('FINANCE_JWT_KEY')),
+        'account_no' => env('QRIS_ACCOUNT_NO', '5080010295'),
+        'mitra_customer_id' => env('QRIS_MITRA_CUSTOMER_ID', 'ISLAMIC CENTER SMG451061'),
+        'vano_prefix' => env('QRIS_VANO_PREFIX', '880088'),
+        'tipe_generate' => env('QRIS_TIPE_GENERATE', 'MTR-GENERATE-QRIS-DYNAMIC'),
+        'tipe_check' => env('QRIS_TIPE_CHECK', 'MTR-CHECKSTATUS-QRIS-DYNAMIC'),
+        'timeout' => (int) env('QRIS_TIMEOUT', 20),
+        'payment_method' => 'qris',
+    ],
+
 ];

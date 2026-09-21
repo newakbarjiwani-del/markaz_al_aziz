@@ -14,6 +14,21 @@
     </div>
 @endif
 
+<section class="mb-6 card p-5">
+    <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-lg font-semibold">Halaqoh saya</h2>
+        <a href="{{ route('portal.guru.tahfidz.rekap.index') }}" class="btn-secondary text-sm">Isi rekap mingguan</a>
+    </div>
+    @forelse($halaqoh as $item)
+        <div class="border-b border-slate-100 py-3 text-sm last:border-0 dark:border-slate-800">
+            <p class="font-medium">{{ $item->displayName() }}</p>
+            <p class="text-slate-500">{{ $item->program?->label() }} · {{ $item->anggota->count() }} anggota</p>
+        </div>
+    @empty
+        <p class="text-sm text-slate-500">Belum ada halaqoh yang diampu.</p>
+    @endforelse
+</section>
+
 <div class="mb-6 card p-5">
     <h2 class="mb-3 text-lg font-semibold">Catat / verifikasi</h2>
     <form method="POST" action="{{ route('portal.guru.tahfidz.progress.store') }}" class="grid gap-4 sm:grid-cols-2">

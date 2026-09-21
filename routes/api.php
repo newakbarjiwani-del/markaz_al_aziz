@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Api\FinancePaymentController;
 use App\Http\Controllers\Api\OrangTua\DashboardController as OrtuDashboardController;
+use App\Http\Controllers\Api\QrisPushNotifController;
 use App\Http\Controllers\Api\Siswa\DashboardController as SiswaDashboardController;
 use App\Http\Controllers\Auth\ApiAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('finance/payment', FinancePaymentController::class)->middleware('throttle:60,1');
+Route::match(['get', 'post'], 'finance/qris/push-notif', QrisPushNotifController::class)->middleware('throttle:60,1');
 
 Route::prefix('auth')->group(function () {
     Route::post('ortu/login', [ApiAuthController::class, 'loginOrangTua'])->middleware('throttle:5,1');

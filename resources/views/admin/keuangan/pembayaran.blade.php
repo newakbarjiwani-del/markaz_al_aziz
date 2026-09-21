@@ -9,6 +9,8 @@
 
 <div id="pembayaran-page"
      data-tagihan-url="{{ url('admin/keuangan/pembayaran/siswa') }}"
+     data-qris-url="{{ route('admin.keuangan.pembayaran.qris.store') }}"
+     data-qris-enabled="{{ config('finance.qris.enabled') ? '1' : '0' }}"
      data-fidbank-tunai="1140000"
      data-fidbank-saldo="1140002"
      data-receipt-app-name="{{ config('app.name') }}"
@@ -83,9 +85,16 @@
 
             <div id="tagihan-selection-bar" class="mt-4 hidden flex flex-wrap items-center justify-between gap-3 rounded-lg border border-primary-200 bg-primary-50 px-4 py-3 dark:border-primary-800 dark:bg-primary-950/40">
                 <p id="tagihan-selection-summary" class="text-sm font-medium text-primary-900 dark:text-primary-100"></p>
-                <button type="button" id="open-payment-btn" class="btn-primary btn-sm">
-                    <x-icon name="cash" size="sm" class="mr-1" /> Bayar Tagihan Terpilih
-                </button>
+                <div class="flex flex-wrap gap-2">
+                    @if(config('finance.qris.enabled'))
+                        <button type="button" id="open-qris-btn" class="btn-secondary btn-sm">
+                            <x-icon name="qrcode" size="sm" class="mr-1" /> Bayar QRIS
+                        </button>
+                    @endif
+                    <button type="button" id="open-payment-btn" class="btn-primary btn-sm">
+                        <x-icon name="cash" size="sm" class="mr-1" /> Bayar Tagihan Terpilih
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -147,5 +156,6 @@
 @push('scripts')
 <script src="{{ asset('js/payment-receipt.js') }}?v=13"></script>
 <script src="{{ asset('js/student-search.js') }}?v=1"></script>
-<script src="{{ asset('js/pembayaran.js') }}?v=15"></script>
+<script src="{{ asset('js/qris-payment.js') }}?v=2"></script>
+<script src="{{ asset('js/pembayaran.js') }}?v=17"></script>
 @endpush

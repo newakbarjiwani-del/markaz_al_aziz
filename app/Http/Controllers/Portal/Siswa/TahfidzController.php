@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\PortalAccess;
 use App\Models\TahfidzAyat;
 use App\Models\TahfidzProgress;
+use App\Models\TahfidzRekapSiswa;
 use App\Models\TahfidzSurah;
 use App\Models\TahfidzTarget;
 use App\Services\TahfidzProgressService;
@@ -40,6 +41,13 @@ class TahfidzController extends Controller
             ->limit(10)
             ->get();
 
+        $rekaps = TahfidzRekapSiswa::query()
+            ->with(['rekap.program', 'halaqoh.guru'])
+            ->where('siswa_id', $siswa->id)
+            ->orderByDesc('id')
+            ->limit(10)
+            ->get();
+
         return view('portal.siswa.tahfidz.index', [
             'title' => 'Tahfidz',
             'siswa' => $siswa,
@@ -47,6 +55,7 @@ class TahfidzController extends Controller
             'juzList' => $juzList,
             'targets' => $targets,
             'progress' => $progress,
+            'rekaps' => $rekaps,
             'statuses' => TahfidzProgressStatus::labels(),
         ]);
     }

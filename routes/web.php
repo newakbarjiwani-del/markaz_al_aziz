@@ -65,6 +65,7 @@ use App\Http\Controllers\Admin\Finance\PembayaranController;
 use App\Http\Controllers\Admin\Finance\PindahSaldoController;
 use App\Http\Controllers\Admin\Finance\PotonganPemakaianController;
 use App\Http\Controllers\Admin\Finance\PotonganSiswaController;
+use App\Http\Controllers\Admin\Finance\QrisPaymentController;
 use App\Http\Controllers\Admin\Finance\RekeningController;
 use App\Http\Controllers\Admin\Finance\RiwayatPembayaranController;
 use App\Http\Controllers\Admin\Finance\SaldoSiswaController;
@@ -116,8 +117,12 @@ use App\Http\Controllers\Admin\StudentManagement\ProfilSiswaController;
 use App\Http\Controllers\Admin\StudentManagement\RiwayatAkademikController;
 use App\Http\Controllers\Admin\TagihanLookupController;
 use App\Http\Controllers\Admin\Tahfidz\DashboardController as TahfidzDashboardController;
+use App\Http\Controllers\Admin\Tahfidz\HalaqohController as AdminTahfidzHalaqohController;
 use App\Http\Controllers\Admin\Tahfidz\JadwalController as AdminTahfidzJadwalController;
+use App\Http\Controllers\Admin\Tahfidz\KirimRekapWaController as AdminTahfidzKirimRekapWaController;
+use App\Http\Controllers\Admin\Tahfidz\ProgramController as AdminTahfidzProgramController;
 use App\Http\Controllers\Admin\Tahfidz\ProgressController as AdminTahfidzProgressController;
+use App\Http\Controllers\Admin\Tahfidz\RekapController as AdminTahfidzRekapController;
 use App\Http\Controllers\Admin\Tahfidz\TargetController as AdminTahfidzTargetController;
 use App\Http\Controllers\Admin\TeacherLookupController;
 use App\Http\Controllers\Admin\TeacherManagement\DashboardController as TeacherDashboardController;
@@ -163,6 +168,7 @@ use App\Http\Controllers\Portal\OrangTua\PembayaranController as OrtuPembayaranC
 use App\Http\Controllers\Portal\OrangTua\PerpustakaanController as OrtuPerpustakaanController;
 use App\Http\Controllers\Portal\OrangTua\PindahSaldoController as OrtuPindahSaldoController;
 use App\Http\Controllers\Portal\OrangTua\PrestasiSiswaController as OrtuPrestasiSiswaController;
+use App\Http\Controllers\Portal\OrangTua\QrisPaymentController as OrtuQrisPaymentController;
 use App\Http\Controllers\Portal\OrangTua\RaporController as OrtuRaporController;
 use App\Http\Controllers\Portal\OrangTua\RekapPerizinanController as OrtuRekapPerizinanController;
 use App\Http\Controllers\Portal\OrangTua\RekapPresensiController as OrtuRekapPresensiController;
@@ -562,6 +568,21 @@ Route::middleware(['auth', 'admin.access'])->prefix('admin')->name('admin.')->gr
     Route::prefix('tahfidz')->name('tahfidz.')->group(function () {
         Route::get('/dashboard', [TahfidzDashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/program', [AdminTahfidzProgramController::class, 'index'])->name('program.index');
+        Route::get('/program/data', [AdminTahfidzProgramController::class, 'data'])->name('program.data');
+        Route::post('/program', [AdminTahfidzProgramController::class, 'store'])->name('program.store');
+        Route::put('/program/{program}', [AdminTahfidzProgramController::class, 'update'])->name('program.update');
+        Route::delete('/program/{program}', [AdminTahfidzProgramController::class, 'destroy'])->name('program.destroy');
+
+        Route::get('/halaqoh', [AdminTahfidzHalaqohController::class, 'index'])->name('halaqoh.index');
+        Route::get('/halaqoh/data', [AdminTahfidzHalaqohController::class, 'data'])->name('halaqoh.data');
+        Route::post('/halaqoh', [AdminTahfidzHalaqohController::class, 'store'])->name('halaqoh.store');
+        Route::get('/halaqoh/{halaqoh}', [AdminTahfidzHalaqohController::class, 'show'])->name('halaqoh.show');
+        Route::put('/halaqoh/{halaqoh}', [AdminTahfidzHalaqohController::class, 'update'])->name('halaqoh.update');
+        Route::delete('/halaqoh/{halaqoh}', [AdminTahfidzHalaqohController::class, 'destroy'])->name('halaqoh.destroy');
+        Route::post('/halaqoh/{halaqoh}/anggota', [AdminTahfidzHalaqohController::class, 'storeAnggota'])->name('halaqoh.anggota.store');
+        Route::delete('/halaqoh/{halaqoh}/anggota/{tahfidzHalaqohAnggota}', [AdminTahfidzHalaqohController::class, 'destroyAnggota'])->name('halaqoh.anggota.destroy');
+
         Route::get('/progress', [AdminTahfidzProgressController::class, 'index'])->name('progress.index');
         Route::get('/progress/data', [AdminTahfidzProgressController::class, 'data'])->name('progress.data');
         Route::post('/progress', [AdminTahfidzProgressController::class, 'store'])->name('progress.store');
@@ -575,6 +596,22 @@ Route::middleware(['auth', 'admin.access'])->prefix('admin')->name('admin.')->gr
         Route::delete('/target/{target}', [AdminTahfidzTargetController::class, 'destroy'])->name('target.destroy');
 
         Route::get('/jadwal', [AdminTahfidzJadwalController::class, 'index'])->name('jadwal.index');
+        Route::get('/jadwal/data', [AdminTahfidzJadwalController::class, 'data'])->name('jadwal.data');
+        Route::post('/jadwal', [AdminTahfidzJadwalController::class, 'store'])->name('jadwal.store');
+        Route::put('/jadwal/{jadwal}', [AdminTahfidzJadwalController::class, 'update'])->name('jadwal.update');
+        Route::delete('/jadwal/{jadwal}', [AdminTahfidzJadwalController::class, 'destroy'])->name('jadwal.destroy');
+
+        Route::get('/rekap', [AdminTahfidzRekapController::class, 'index'])->name('rekap.index');
+        Route::get('/rekap/data', [AdminTahfidzRekapController::class, 'data'])->name('rekap.data');
+        Route::post('/rekap', [AdminTahfidzRekapController::class, 'store'])->name('rekap.store');
+        Route::get('/rekap/{rekap}', [AdminTahfidzRekapController::class, 'show'])->name('rekap.show');
+        Route::post('/rekap/{rekap}/siap', [AdminTahfidzRekapController::class, 'markSiap'])->name('rekap.siap');
+        Route::put('/rekap/{rekap}/baris/{tahfidzRekapSiswa}', [AdminTahfidzRekapController::class, 'updateBaris'])->name('rekap.baris.update');
+
+        Route::get('/kirim-wa', [AdminTahfidzKirimRekapWaController::class, 'index'])->name('kirim-wa.index');
+        Route::get('/kirim-wa/data', [AdminTahfidzKirimRekapWaController::class, 'data'])->name('kirim-wa.data');
+        Route::post('/kirim-wa/build', [AdminTahfidzKirimRekapWaController::class, 'build'])->name('kirim-wa.build');
+        Route::get('/kirim-wa/{rekap}/preview', [AdminTahfidzKirimRekapWaController::class, 'preview'])->name('kirim-wa.preview');
     });
 
     // Perizinan
@@ -750,6 +787,9 @@ Route::middleware(['auth', 'admin.access'])->prefix('admin')->name('admin.')->gr
         Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
         Route::get('/pembayaran/siswa/{siswa}/tagihan', [PembayaranController::class, 'studentTagihan'])->name('pembayaran.tagihan');
         Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
+        Route::post('/pembayaran/qris', [QrisPaymentController::class, 'store'])->name('pembayaran.qris.store');
+        Route::get('/pembayaran/qris/{qrisPayment}', [QrisPaymentController::class, 'show'])->name('pembayaran.qris.show');
+        Route::post('/pembayaran/qris/{qrisPayment}/check', [QrisPaymentController::class, 'check'])->name('pembayaran.qris.check');
         Route::get('/riwayat-pembayaran', [RiwayatPembayaranController::class, 'index'])->name('riwayat-pembayaran.index');
         Route::get('/riwayat-pembayaran/data', [RiwayatPembayaranController::class, 'data'])->name('riwayat-pembayaran.data');
         Route::get('/riwayat-pembayaran/receipt', [RiwayatPembayaranController::class, 'receipt'])->name('riwayat-pembayaran.receipt');
@@ -985,6 +1025,10 @@ Route::middleware(['auth', 'role:guru'])->prefix('portal/guru')->name('portal.gu
     Route::get('/booklet/{booklet}', [PortalBookletController::class, 'show'])->name('booklet.show');
     Route::get('/tahfidz', [GuruTahfidzController::class, 'index'])->name('tahfidz.index');
     Route::post('/tahfidz/progress', [GuruTahfidzController::class, 'storeProgress'])->name('tahfidz.progress.store');
+    Route::get('/tahfidz/rekap', [GuruTahfidzController::class, 'rekapIndex'])->name('tahfidz.rekap.index');
+    Route::post('/tahfidz/rekap', [GuruTahfidzController::class, 'rekapStore'])->name('tahfidz.rekap.store');
+    Route::get('/tahfidz/rekap/{rekap}', [GuruTahfidzController::class, 'rekapShow'])->name('tahfidz.rekap.show');
+    Route::put('/tahfidz/rekap/{rekap}/baris/{tahfidzRekapSiswa}', [GuruTahfidzController::class, 'rekapUpdateBaris'])->name('tahfidz.rekap.baris.update');
 });
 
 Route::middleware(['auth', 'role:orang_tua'])->prefix('portal/ortu')->name('portal.ortu.')->group(function () {
@@ -995,6 +1039,9 @@ Route::middleware(['auth', 'role:orang_tua'])->prefix('portal/ortu')->name('port
     Route::get('/tagihan/data', [OrtuTagihanController::class, 'data'])->name('tagihan.data');
     Route::get('/tagihan/unpaid', [OrtuTagihanController::class, 'unpaid'])->name('tagihan.unpaid');
     Route::post('/tagihan/bayar', [OrtuTagihanController::class, 'pay'])->name('tagihan.bayar');
+    Route::post('/tagihan/qris', [OrtuQrisPaymentController::class, 'store'])->name('tagihan.qris.store');
+    Route::get('/tagihan/qris/{qrisPayment}', [OrtuQrisPaymentController::class, 'show'])->name('tagihan.qris.show');
+    Route::post('/tagihan/qris/{qrisPayment}/check', [OrtuQrisPaymentController::class, 'check'])->name('tagihan.qris.check');
     Route::get('/saldo', [OrtuPembayaranController::class, 'index'])->name('pembayaran.index');
     Route::get('/saldo/data', [OrtuPembayaranController::class, 'data'])->name('pembayaran.data');
     Route::get('/pindah-saldo', [OrtuPindahSaldoController::class, 'index'])->name('pindah-saldo');
